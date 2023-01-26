@@ -1,0 +1,98 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <p class="mb-4 pb-2 pb-md-0 mb-md-5" style="font-size: 30px;"><b>Step 2 of 2</b> Account information</p>
+            <form method="post" action="/signup2">
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="Username">Username</label>
+                    <input type="text" name="Username" class="form-control form-control-lg" id="uname" oninput="userSearch()" required />
+                  </div>
+
+                </div>
+               
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="lastName">Password</label>
+                    <input type="password" class="form-control form-control-lg" id="pass1" name="Password" required />
+
+                  </div>
+
+                </div>
+                
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="lastName">Re-enter Password</label>
+                    <input type="password" class="form-control form-control-lg" id="pass2" oninput="checkPass()" required />
+
+                  </div>
+
+                </div>
+                
+              </div>
+              
+
+
+
+              <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" id="butt" type="submit" value="Submit" disabled />
+              </div>
+            <input type="text" name="FirstName"  value="{{user.FirstName}}" hidden/>
+            <input type="text" name="LastName" value="{{user.LastName}}" hidden/>
+            <input type="text" name="DOB" value="{{user.DOB}}" hidden/>
+            <input type="text" name="Gender" value="{{user.Gender}}" hidden/>
+            <input type="text" name="Emailid"  value="{{user.Emailid}}" hidden/>
+            <input type="text" name="PhoneNumber" value="{{user.PhoneNumber}}" hidden/>
+
+            </form>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="text" id="sotp" hidden>
+</section>
+<script>
+
+
+  
+  function checkPass() {
+    pass1 = document.getElementById('pass1').value
+    pass2 = document.getElementById('pass2').value
+    if (pass1 === pass2) {
+      $('#butt').removeAttr("disabled");
+    } else {
+      $('#butt').attr('disabled', 'disabled');
+    }
+  }
+  function userSearch(){
+    uname=document.getElementById('uname').value
+    $.ajax({
+      url:'/userSearch',
+      data:{
+        uname:uname
+        },
+      method:'post',
+      success:(response)=>{
+        console.log(response)
+      }
+    })
+  }
+</script>

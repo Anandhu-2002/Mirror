@@ -1,0 +1,159 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+             <p class="mb-4 pb-2 pb-md-0 mb-md-5" style="font-size: 30px;"><b>Step 1 of 2</b> Account information</p>
+            <form method="post" action="/signup">
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="firstName">First Name</label>
+                    <input type="text" name="FirstName" class="form-control form-control-lg" required />
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="lastName">Last Name</label>
+                    <input type="text" class="form-control form-control-lg" name="LastName" required />
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div class="form-outline datepicker w-100">
+                    <label for="birthdayDate" class="form-label">Date Of Birth</label>
+                    <input type="date" class="form-control form-control-lg" name="DOB" required />
+
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <h6 class="mb-2 pb-1">Gender: </h6>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Gender" value="Female" checked />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Gender" value="Male" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="Gender" value="Other" />
+                    <label class="form-check-label" for="otherGender">Other</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="emailAddress">Email</label>
+                    <input type="email" id="mailid" name="Emailid" class="form-control form-control-lg" required />
+
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="phoneNumber">Phone Number</label>
+                    <input type="tel" name="PhoneNumber" class="form-control form-control-lg" required />
+
+                  </div>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="Otp">Enter OTP </label>
+                    <input type="text" id="otp" class="form-control form-control-lg" oninput="checkOtp()" />
+
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <div class="mt-4 pt-2">
+                      <input class="btn btn-primary btn-lg" type="button" value="Send Otp"
+                        onclick="otpVerification()" />
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+
+
+              <div class="mt-4 pt-2">
+                <input class="btn btn-primary btn-lg" id="butt" type="submit" value="Submit" disabled />
+              </div>
+
+            </form>
+            <div class="mt-4 pt-2">
+              <a href="/" class="mr-9">Already have account ?</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="text" id="sotp" hidden>
+</section>
+<script>
+
+
+  function otpVerification() {
+
+    mailid = document.getElementById('mailid').value
+
+    $.ajax({
+      url: '/verify-otp',
+      data: {
+        mailid: mailid
+      },
+      method: 'post',
+      success: (response) => {
+        console.log(response)
+        if (response.respo) {
+          document.getElementById('sotp').value = response.otp
+
+        } else {
+          alert("Emailid does not exist")
+
+        }
+      }
+
+    })
+  }
+  function checkOtp() {
+    sotp = document.getElementById('sotp').value
+    iotp = document.getElementById('otp').value
+    if (iotp === sotp) {
+      $('#butt').removeAttr("disabled");
+    } else {
+      $('#butt').attr('disabled', 'disabled');
+    }
+  }
+</script>
