@@ -2,7 +2,13 @@ var express = require('express');
 const { generate } = require('otp-generator');
 var router = express.Router();
 var userHelpers=require('../helpers/user-helpers');
-
+const verifyLogin=(req, res, next)=>{
+  if(req.session.userLoggedIn){
+    next()
+  }else{
+    res.redirect('/login')
+  }
+}
 
 
 /* GET home page. */
@@ -16,7 +22,7 @@ router.get('/login',(req,res)=>{
 router.post('/login',(req,res)=>{
   
   userHelpers.Login(req.body).then((response) => {
-    console.log(response);
+    
 
     if (response.status) {
       
@@ -29,8 +35,9 @@ router.post('/login',(req,res)=>{
     }
   })
 });
-router.get('/home',(req,res)=>{
-  res.render('user/home')
+router.get('/home',verifyLogin,(req,res)=>{
+  let user=req.session.user
+  res.render('user/home',{user})
 })
 router.get('/signup',(req,res)=>{
   res.render('user/signup')
@@ -51,7 +58,7 @@ router.post('/verify-otp',async(req,res)=>{
 });
 router.get('/signup2',(req,res)=>{
   
-  res.redirect('/signup2')
+  res.render('user/signup2')
 });
 router.post('/signup2',(req,res)=>{
   
@@ -62,7 +69,14 @@ router.post('/signup2',(req,res)=>{
   res.redirect('/login')
 });
 router.post('/userSearch',(req,res)=>{
-  userHelpers.userSearch(req.body.uname)
+  userHelpers.userSearch(req.body.uname).then((response)=>{
+    
+    res.json(response)
+
+    
+    
+
+  })
 })
 
 module.exports = router;

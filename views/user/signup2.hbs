@@ -51,13 +51,14 @@
               <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" id="butt" type="submit" value="Submit" disabled />
               </div>
+              {{#if user}}
             <input type="text" name="FirstName"  value="{{user.FirstName}}" hidden/>
             <input type="text" name="LastName" value="{{user.LastName}}" hidden/>
             <input type="text" name="DOB" value="{{user.DOB}}" hidden/>
             <input type="text" name="Gender" value="{{user.Gender}}" hidden/>
             <input type="text" name="Emailid"  value="{{user.Emailid}}" hidden/>
             <input type="text" name="PhoneNumber" value="{{user.PhoneNumber}}" hidden/>
-
+              {{/if}}
             </form>
             
           </div>
@@ -69,6 +70,7 @@
 
   <input type="text" id="sotp" hidden>
 </section>
+
 <script>
 
 
@@ -90,8 +92,23 @@
         uname:uname
         },
       method:'post',
-      success:(response)=>{
-        console.log(response)
+      success:(res)=>{
+        
+        if(res.found ){
+           $('#uname').css('border', function(){
+        
+            return ' solid #f00';
+        
+        }).change()
+        }
+        else{
+         $('#uname').css('border', function(){
+        
+            return 'solid #b2d3eb';
+        
+        }).change()
+        }
+        
       }
     })
   }

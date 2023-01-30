@@ -99,9 +99,14 @@ module.exports={
   },
   userSearch:(userName)=>{
     return new Promise(async(resolve,reject)=>{
-       let user=await db.get().collection(collections.USER_COLLECTION).find({Username : {$regex: userName }})
+       let user=await db.get().collection(collections.USER_COLLECTION).find({Username : {$regex: userName }}).toArray()
 
-      console.log(user);
+      if(user.length!=0){
+        resolve({found:true,uname:user[0].Username})
+      }
+      else{
+        resolve({found:false})
+      }
     })
   }
 
