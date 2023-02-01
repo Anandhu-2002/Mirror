@@ -118,6 +118,12 @@ module.exports={
       })
     })
 
+  },
+  viewPhotos:()=>{
+    return new Promise(async(resolve,reject)=>{
+      let photos=await db.get().collection(collections.PHOTOS_COLLECTION).find().toArray()
+      resolve(photos)
+    })
   }
 
 }

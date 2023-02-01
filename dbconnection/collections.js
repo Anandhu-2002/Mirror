@@ -1,4 +1,4 @@
 module.exports={
     USER_COLLECTION:'user',
-    PHOTOS_COLLECTION:'photos'
+    PHOTOS_COLLECTION:'uplodedphotos'
 }
