@@ -1,5 +1,5 @@
 var express = require('express');
-const { generate } = require('otp-generator');
+
 var router = express.Router();
 var userHelpers=require('../helpers/user-helpers');
 const verifyLogin=(req, res, next)=>{
@@ -77,6 +77,54 @@ router.post('/userSearch',(req,res)=>{
     
 
   })
+});
+router.get('/uploadPhoto',verifyLogin,(req,res)=>{
+  
+  res.render('user/photoUpload')
+});
+router.post('/photos',async (req,res)=>{
+  console.log(req.body);
+  let image=req.files.Image;
+  let ob =await userHelpers.uploadPhotos(req.body)
+ 
+ image.mv('./public/photos/'+ob+'.jpg',(err)=>{
+      if(!err){
+         res.redirect('/home');
+
+      }else{
+        console.log('error')
+      }
+  
 })
+})
+// router.post('/uploadPhotos',(req,res)=>{
+//   console.log(req.user);
+// //   let ob =await userHelpers.uploadPhotos(req.body)
+ 
+// //  image.mv('./public/photos/'+ob+'.jpg',(err)=>{
+// //       if(!err){
+// //          res.redirect('/home');
+
+// //       }else{
+// //         console.log('error')
+// //       }
+// //     })
+
+   
+
+//   // userHelpers.uploadPhotos(req.body).then((imgId)=>{
+//   //   console.log(req.body)
+//   //   image.mv('./public/photos/'+imgId+'.jpg',(err)=>{
+//   //     if(!err){
+//   //        res.redirect('/home');
+//   //     }else{
+//   //       console.log('error')
+//   //     }
+
+//   //    })
+//   //   console.log(data);
+//   // })
+// })
+
 
 module.exports = router;

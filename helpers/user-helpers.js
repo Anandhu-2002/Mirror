@@ -108,6 +108,16 @@ module.exports={
         resolve({found:false})
       }
     })
+  },
+  uploadPhotos:(photoDetails)=>{
+    return new Promise(async(resolve,reject)=>{
+      await db.get().collection(collections.PHOTOS_COLLECTION).insertOne(photoDetails).then((data)=>{
+        resolve(data.insertedId)
+
+
+      })
+    })
+
   }
 
 }

@@ -2,6 +2,7 @@ const toggleThemeBtn = document.querySelector('.header__theme-button');
 // ===================================
 // DARK/LIGHT THEME
 // Set initial theme from LocalStorage
+console.log(toggleThemeBtn);
 document.onload = setInitialTheme(localStorage.getItem('theme'));
 function setInitialTheme(themeKey) {
   if (themeKey === 'dark') {
