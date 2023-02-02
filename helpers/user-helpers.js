@@ -109,9 +109,13 @@ module.exports={
       }
     })
   },
-  uploadPhotos:(photoDetails)=>{
+  uploadPhotos:(photoDetails,username)=>{
+    let photoObj={
+      Description:photoDetails.Description,
+      username:username
+    }
     return new Promise(async(resolve,reject)=>{
-      await db.get().collection(collections.PHOTOS_COLLECTION).insertOne(photoDetails).then((data)=>{
+      await db.get().collection(collections.PHOTOS_COLLECTION).insertOne(photoObj).then((data)=>{
         resolve(data.insertedId)
 
 

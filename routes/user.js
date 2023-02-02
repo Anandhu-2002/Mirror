@@ -88,9 +88,9 @@ router.get('/uploadPhoto', verifyLogin, (req, res) => {
 router.post('/photos', async (req, res) => {
   console.log(req.body);
   let image = req.files.Image;
-  let ob = await userHelpers.uploadPhotos(req.body)
+  let uploadedId = await userHelpers.uploadPhotos(req.body,req.session.user.Username)
 
-  image.mv('./public/photos/' + ob + '.jpg', (err) => {
+  image.mv('./public/photos/' + uploadedId + '.jpg', (err) => {
     if (!err) {
       res.redirect('/home');
 

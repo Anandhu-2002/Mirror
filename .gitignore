@@ -4,7 +4,7 @@
 
 /node_modules
 /public/photos
-.img
-
+.jpg
+*.jpg
 
 npm-debug.log*
