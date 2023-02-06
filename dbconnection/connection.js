@@ -3,7 +3,8 @@ const state={
     db:null
 }
 module.exports.connect=function(done){
-    const url='mongodb://127.0.0.1:27017'
+    const url="mongodb+srv://Anandhu:688541@cluster0.a3tzjdd.mongodb.net/?retryWrites=true&w=majority"
+    // const url='mongodb://127.0.0.1:27017'
     const dbname='mirror'
 
     mongoClient.connect(url,(err,data)=>{

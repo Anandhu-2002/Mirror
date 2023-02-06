@@ -99,6 +99,23 @@ router.post('/photos', async (req, res) => {
     }
 
   })
+});
+router.get('/search',(req,res)=>{
+  res.render('user/search')
+
+});
+router.post('/search',async(req, res) => {
+  let users=await userHelpers.userSearch(req.body.uname)
+  let userobj=users.user
+  console.log(userobj);
+  res.render('user/search',{userobj})
+
+  
+});
+router.get('/profile',async(req,res)=>{
+  user=req.session.user
+  res.render('user/profile',{user})
+
 })
 
 

@@ -51,7 +51,7 @@ module.exports={
             var mailOptions = {
               from: 'mirror.pvltd@gmail.com',
               to: mailid,
-              subject: 'Verify Mirror registration usin this otp.Dont share with anyone',
+              subject: 'Verify Mirror registration using this otp.Dont share with anyone',
               text: otp
             };
             
@@ -95,6 +95,7 @@ module.exports={
               resolve({status:false})
           }
 
+
       })
   },
   userSearch:(userName)=>{
@@ -102,11 +103,13 @@ module.exports={
        let user=await db.get().collection(collections.USER_COLLECTION).find({Username : {$regex: userName }}).toArray()
 
       if(user.length!=0){
-        resolve({found:true,uname:user[0].Username})
+        resolve({found:true,user})
       }
       else{
         resolve({found:false})
+        
       }
+
     })
   },
   uploadPhotos:(photoDetails,username)=>{

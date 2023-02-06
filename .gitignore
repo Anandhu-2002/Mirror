@@ -3,8 +3,8 @@
 # dependencies
 
 /node_modules
-/public/photos
-.jpg
-*.jpg
+# /public/photos
+# .jpg
+# *.jpg
 
 npm-debug.log*
