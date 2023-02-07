@@ -131,6 +131,12 @@ module.exports={
       let photos=await db.get().collection(collections.PHOTOS_COLLECTION).find().toArray()
       resolve(photos)
     })
+  },
+  profile:(username)=>{
+    return new Promise(async(resolve,reject)=>{
+      let photos=await db.get().collection(collections.PHOTOS_COLLECTION).find({username:username}).toArray()
+      resolve(photos)
+    })
   }
 
 }

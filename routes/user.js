@@ -113,8 +113,12 @@ router.post('/search',async(req, res) => {
   
 });
 router.get('/profile',async(req,res)=>{
+  console.log(req.session.user.Username)
   user=req.session.user
-  res.render('user/profile',{user})
+  userHelpers.profile(req.session.user.Username).then((photos)=>{
+    res.render('user/profile',{user,photos})
+  })
+  
 
 })
 
