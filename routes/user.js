@@ -2,6 +2,10 @@ var express = require('express');
 
 var router = express.Router();
 var userHelpers = require('../helpers/user-helpers');
+var fs=require('fs');
+const fileUpload = require('express-fileupload');
+
+
 const verifyLogin = (req, res, next) => {
   if (req.session.userLoggedIn) {
     next()
@@ -38,6 +42,7 @@ router.post('/login', (req, res) => {
 router.get('/home', verifyLogin, async(req, res) => {
   let user = req.session.user
   userHelpers.viewPhotos().then((photos)=>{
+    photos.reverse()    
     res.render('user/home', { user, photos})
   })
   
@@ -112,14 +117,30 @@ router.post('/search',async(req, res) => {
 
   
 });
-router.get('/profile',async(req,res)=>{
+router.get('/profile',verifyLogin,async(req,res)=>{
   
   user=req.session.user
   userHelpers.profile(req.session.user.Username).then((photos)=>{
+    photos.reverse()
     res.render('user/profile',{user,photos})
   })
   
 
+})
+router.get('/removePhoto/:id',async(req,res)=>{
+  let photoId=req.params.id
+  await userHelpers.removePhoto(photoId)
+  let imgpath='./public/photos/' + photoId + '.jpg'
+  fs.unlink(imgpath,(err)=>{
+    if (!err) {
+      res.redirect('/profile');
+
+    } else {
+      console.log('error')
+    }
+
+
+  })
 })
 
 

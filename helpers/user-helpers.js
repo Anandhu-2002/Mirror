@@ -137,6 +137,14 @@ module.exports={
       let photos=await db.get().collection(collections.PHOTOS_COLLECTION).find({username:username}).toArray()
       resolve(photos)
     })
+  },
+  removePhoto:(photoid)=>{
+    return new Promise(async(resolve,reject)=>{
+      db.get().collection(collections.PHOTOS_COLLECTION).deleteOne({_id:objectId(photoid)}).then(()=>{
+        resolve()
+      })
+      
+    })
   }
 
 }
