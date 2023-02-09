@@ -5,7 +5,8 @@
                 <h2 class="text-center text">Add Products</h2>
                 <form  method="POST" enctype="multipart/form-data" action="/photos">
                     <span class="text">Image</span>
-                    <input type="file" name="Image" class="form-control">
+                    <img style="width: 100px;height:auto" id="imgView">
+                    <input type="file" name="Image" class="form-control" onchange="viewImg(event)">
 
                                        
                     <span class="text">Description</span>
@@ -18,3 +19,8 @@
         </div>
     </div>
 </section>
+<script>
+    function viewImg(){
+        document.getElementById("imgView").src=URL.createObjectURL(event.target.files[0])
+    }
+</script>
