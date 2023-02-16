@@ -43,7 +43,15 @@
                 <p class="font-italic mb-0">Photographer</p>
               </div>
             </div>
-            {{#each photos}}
+            <div class="cardsdiv">
+              {{#each photos}}
+              <div class="carddiv">
+                <img src="/photos/{{this._id}}.jpg"
+                  style="width:120px;height:125px;">
+              </div>
+              {{/each}}
+            </div>
+            {{!-- {{#each photos}}
               <div class="col mb-2">
                   <img src="/photos/{{this._id}}.jpg"
                   alt="image 1" class="w-100 rounded-3">
@@ -67,22 +75,9 @@
               <div class="col mb-2">
                  {{this.Description}}
               </div>
-            {{/each}}
+            {{/each}} --}}
 
-            {{!-- <div class="row g-2">
-              <div class="col mb-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                  alt="image 1" class="w-100 rounded-3">
-              </div>
-              <div class="col mb-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                  alt="image 1" class="w-100 rounded-3">
-              </div>
-               <div class="col mb-2">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                  alt="image 1" class="w-100 rounded-3">
-              </div>
-            </div> --}}
+
 
           </div>
         </div>

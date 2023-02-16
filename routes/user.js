@@ -18,7 +18,7 @@ const verifyLogin = (req, res, next) => {
 /* GET home page. */
 router.get('/', (req, res, next) => {
 
-  res.render('user/login');
+  res.render('user/login'); 
 });
 router.get('/login', (req, res) => {
   res.redirect('/')

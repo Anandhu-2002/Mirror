@@ -26,6 +26,17 @@ select,
 textarea {
   font-family: 'Roboto', sans-serif;
 }
+.cardsdiv{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+.carddiv{
+  height: 125px;
+  flex: 0 0 120px;
+  border: solid 1px;
+  border-color: gray;
+}
 /* @keyframes shake{
   0%,100%{ translate: 0;}
   25%{translate: 8px 0;}
