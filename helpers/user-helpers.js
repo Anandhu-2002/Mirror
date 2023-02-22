@@ -8,21 +8,10 @@ const objectId=require('mongodb').ObjectId
 module.exports={
     Signup:async(userData)=>{
       userData.Password=await bcrypt.hash(userData.Password,10)
-      // const userObj={
-      //   FirstName:userData.FirstName,
-      //   LastName:userData.LastName,
-      //   DOB:userData.DOB,
-      //   Gender:userData.Gender,
-      //   Emailid:userData.Emailid,
-      //   PhoneNumber:userData.PhoneNumber,
-      //   Verfied:false,
-      //   Username:userData.Username,
-      //   Password:userData.Password
 
-      // }
         return new Promise(async(resolve,reject)=>{
             
-            //userData.Password=await bcrypt.hash(userData.Password,10)
+            
             db.get().collection(collections.USER_COLLECTION).insertOne(userData).then((data)=>{
               console.log(data);  
               resolve()

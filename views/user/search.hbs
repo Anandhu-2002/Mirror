@@ -26,19 +26,22 @@
         }
     </style>
     
-  <form action="/search" method="post">
+  
     <div class="input-group">
   
-    <input type="text" name="uname" class="form-control rounded" placeholder="Search"/>
-    <button type="submit" class="btn btn-outline-primary">search</button>
+    <input type="text" id="uname" class="form-control rounded"  placeholder="Search" oninput="search()"/>
+    
   
-</div>
-</form>
+    </div>
+    <div class="outerdiv">
+
+
+    </div>
  
 
 
 
-{{#each userobj}}
+{{!-- {{#each userobj}}
 
 <div class="searchdiv">
   <div class="pro">
@@ -49,6 +52,36 @@
   
 </div>
 
-{{/each}}
+{{/each}} --}}
 </section>
+<script>
+  function search(){
+
+     var uname=document.getElementById('uname').value;
+     var outerdiv=document.querySelector('.outerdiv');
+     outerdiv.innerHTML="";
+     if(uname!=""){
+     $.ajax({
+      url:'/Search',
+      data:{
+        uname:uname
+        },
+      method:'post',
+      success:(res)=>{
+        let div=document.createElement('div');
+        console.log(res);
+        let content;
+       
+        for(i=0;i<res.length;i++){
+              div.classList.add('searchdiv');
+              content='<div class="pro"><div class="div2"><a class="no-link" href="/viewuserprofile/'+res[i].Username+'">'+res[i].Username+'</a></div></div>';
+              div.innerHTML=content;
+              outerdiv.appendChild(div);
+        }
+        
+      }
+    })
+     }
+  }
+</script>
 

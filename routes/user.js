@@ -60,7 +60,6 @@ router.post('/signup', (req, res) => {
 
 router.post('/verify-otp', async (req, res) => {
   userHelpers.VerifyOtp(req.body.mailid).then((response) => {
-    console.log(response);
     res.json(response);
   })
 });
@@ -70,9 +69,7 @@ router.get('/signup2', (req, res) => {
 });
 router.post('/signup2', (req, res) => {
 
-  userHelpers.Signup(req.body).then((response) => {
-
-  })
+  userHelpers.Signup(req.body)
 
   res.redirect('/login')
 });
@@ -105,17 +102,21 @@ router.post('/photos', async (req, res) => {
 
   })
 });
-router.get('/search',(req,res)=>{
+router.get('/search',verifyLogin,(req,res)=>{
   res.render('user/search')
 
 });
+router.post('/userSearch', (req, res) => {
+  userHelpers.userSearch(req.body.uname).then((response) => {
+   
+    res.json(response)
+})
+})
 router.post('/search',async(req, res) => {
-  let users=await userHelpers.userSearch(req.body.uname)
-  let userobj=users.user
+  userHelpers.userSearch(req.body.uname).then((response) => {
   
-  res.render('user/search',{userobj})
-
-  
+    res.json(response.user)
+})
 });
 router.get('/profile',verifyLogin,async(req,res)=>{
   
@@ -133,7 +134,7 @@ router.get('/removePhoto/:id',async(req,res)=>{
   let imgpath='./public/photos/' + photoId + '.jpg'
   fs.unlink(imgpath,(err)=>{
     if (!err) {
-      res.redirect('/profile');
+      res.redirect('/profile')
 
     } else {
       console.log('error')
@@ -141,7 +142,19 @@ router.get('/removePhoto/:id',async(req,res)=>{
 
 
   })
-})
+});
+router.get('/viewuserprofile/:id',async(req,res)=>{
+  
+  let userid=req.params.id
+  let User=await userHelpers.userSearch(userid)
+  let user=User.user[0]
+  userHelpers.profile(userid).then((photos)=>{
+
+    photos.reverse()
+    res.render('user/publicprofile',{user,photos})
+  })
+});
+
 
 
 
