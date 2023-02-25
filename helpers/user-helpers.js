@@ -101,6 +101,17 @@ module.exports={
 
     })
   },
+  findalluser:()=>{
+    return new Promise(async(resolve,reject)=>{
+       let users=await db.get().collection(collections.USER_COLLECTION).find().toArray()
+
+      
+        resolve(users)
+        
+      
+
+    })
+  },  
   uploadPhotos:(photoDetails,username)=>{
     let photoObj={
       Description:photoDetails.Description,

@@ -4,7 +4,10 @@ var router = express.Router();
 var userHelpers = require('../helpers/user-helpers');
 var fs=require('fs');
 const fileUpload = require('express-fileupload');
-
+// const http=require('http');
+// var socketio=require('socket.io');
+// var app=require('../app')
+// io=app.io
 
 const verifyLogin = (req, res, next) => {
   if (req.session.userLoggedIn) {
@@ -102,6 +105,10 @@ router.post('/photos', async (req, res) => {
 
   })
 });
+router.get('/userlist',async(req,res)=>{
+  let users=await userHelpers.findalluser()
+  res.render('user/userlist',{users});
+})
 router.get('/search',verifyLogin,(req,res)=>{
   res.render('user/search')
 

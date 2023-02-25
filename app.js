@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session=require('express-session');
 var logger = require('morgan');
+const http=require('http');
+var socketio=require('socket.io');
 
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
@@ -11,15 +13,18 @@ const hbs=require('express-handlebars');
 var db=require('./dbconnection/connection');
 
 var fileUpload=require('express-fileupload')
-
 var app = express();
+
+const server=http.createServer(app)
+const io=socketio(server)
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.engine('hbs',hbs.engine({extname:'hbs',defaultLayout:'layout',layoutsDir:__dirname+'/views/layouts/',partialsDir:__dirname+'/views/partials/'}))
-app.use(fileUpload())
+app.use(fileUpload());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,7 +34,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
+app.get('/message/:uid',(req,res)=>{
+  var reciver=req.params.uid;
+  var sender=req.session.user.Username;
+  res.render('user/message',{reciver,sender})
+  io.on('connection',(socket)=>{
 
+   socket.on('message',(data)=>{
+   
+       var msgto=data.reciver
+       socket.broadcast.emit(msgto,{user:data.sender,msg:data.msg});
+   })
+})
+  
+})
 
 
 
@@ -58,4 +76,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = {app:app,server:server};

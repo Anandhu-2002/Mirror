@@ -1,64 +1,22 @@
 <section>
-    <style>
-        .searchdiv{
-            border: 1px;
-            border-color: black;
-            width: 100%;
-            height: 40px;
-          
-            margin-top: 4px;
-            padding-top: 5px;
 
-            
-        }
-        .pro{
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;     
-            margin-left: 4px;
-         background-color: rgb(207, 207, 153);
-        }
-        .div2{
-            width:200px;
-            height: 30px;
-            
-            margin-left: 40px
-        }
-    </style>
-    
-  
     <div class="input-group">
   
     <input type="text" id="uname" class="form-control rounded"  placeholder="Search" oninput="search()"/>
     
   
     </div>
-    <div class="outerdiv">
+    <div class="usermaindiv">
 
 
     </div>
- 
 
-
-
-{{!-- {{#each userobj}}
-
-<div class="searchdiv">
-  <div class="pro">
-    <div class="div2">
-        <span>{{this.Username}}</span>
-     </div>
-  </div>
-  
-</div>
-
-{{/each}} --}}
 </section>
 <script>
   function search(){
 
      var uname=document.getElementById('uname').value;
-     var outerdiv=document.querySelector('.outerdiv');
+     var outerdiv=document.querySelector('.usermaindiv');
      outerdiv.innerHTML="";
      if(uname!=""){
      $.ajax({
@@ -73,8 +31,8 @@
         let content;
        
         for(i=0;i<res.length;i++){
-              div.classList.add('searchdiv');
-              content='<div class="pro"><div class="div2"><a class="no-link" href="/viewuserprofile/'+res[i].Username+'">'+res[i].Username+'</a></div></div>';
+              div.classList.add('userouterdiv');
+              content='<div class="userprofilediv"><div class="usernamediv"><a class="no-link" href="/viewuserprofile/'+res[i].Username+'">'+res[i].Username+'</a></div></div>';
               div.innerHTML=content;
               outerdiv.appendChild(div);
         }
