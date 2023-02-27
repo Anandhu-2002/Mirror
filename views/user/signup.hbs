@@ -118,12 +118,10 @@
       </div>
     </div>
   </div>
-
-  <input type="text" id="sotp" hidden>
 </section>
 <script>
 
-
+  var genotp;
   function otpVerification() {
 
     mailid = document.getElementById('mailid').value
@@ -137,8 +135,7 @@
       success: (response) => {
         
         if (response.respo) {
-          document.getElementById('sotp').value = response.otp
-
+          genotp=response.otp
         } else {
           alert("Emailid does not exist")
 
@@ -149,8 +146,8 @@
   }
   function checkOtp() {
     sotp = document.getElementById('sotp').value
-    iotp = document.getElementById('otp').value
-    if (iotp === sotp) {
+    inpotp = document.getElementById('otp').value
+    if (inpotp === genotp) {
       $('#butt').removeAttr("disabled");
     } else {
       $('#butt').attr('disabled', 'disabled');
