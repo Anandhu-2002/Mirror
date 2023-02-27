@@ -31,8 +31,6 @@ function appendMessage(data,status){
     let content='<p>'+data.msg+'</p>';
     div.innerHTML=content;
     chats.appendChild(div);
-    let msgnoti=document.querySelector(".msgnoti")
-    msgnoti.style.display="block"
     chats.scrollTop=chats.scrollHeight;
 }
 socket.on(msgget,(data)=>{
