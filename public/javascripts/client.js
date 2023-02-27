@@ -2,15 +2,16 @@ const socket=io();
 var chats=document.querySelector('.chat');
 var sender=document.querySelector('#sender');
 var reciver=document.querySelector('#reciver');
-// var msgSend=document.querySelector('#msg-send');
 var userMsg=document.querySelector('#user-msg');
 var senderid=sender.innerHTML;
 var reciverid=reciver.innerHTML;
+var msgget=senderid.concat(reciverid);
+
 
 
 /**message send */
 $('#msg-send').click(()=>{
-// msgSend.addEventListener('click',()=>{
+
     let data={
         sender:senderid,
         reciver:reciverid,
@@ -29,15 +30,12 @@ function appendMessage(data,status){
     div.classList.add('message',status);
     let content='<p>'+data.msg+'</p>';
     div.innerHTML=content;
-    var executed=false;
-    if(!executed){
-        chats.appendChild(div);
-        executed=true
-    }
-    
+    chats.appendChild(div);
+    let msgnoti=document.querySelector(".msgnoti")
+    msgnoti.style.display="block"
     chats.scrollTop=chats.scrollHeight;
 }
-socket.on(senderid,(data)=>{
-         appendMessage(data,'recived');
-    
+socket.on(msgget,(data)=>{
+    appendMessage(data,'recived');
+  
 })

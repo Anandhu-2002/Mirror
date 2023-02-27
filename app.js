@@ -41,9 +41,10 @@ app.get('/message/:uid',(req,res)=>{
   io.on('connection',(socket)=>{
 
    socket.on('message',(data)=>{
-   
-       var msgto=data.reciver
-       socket.broadcast.emit(msgto,{user:data.sender,msg:data.msg});
+       reciverid=data.reciver
+       senderid=data.sender
+       var msgto=reciverid.concat(senderid)
+       socket.broadcast.emit(msgto,{senderid,msg:data.msg});
    })
 })
   

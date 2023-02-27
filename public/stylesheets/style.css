@@ -225,6 +225,13 @@ div.user-input button{
   background-color: var(--light-blue);
   border-radius: 0 50px 50px 0;
 }
+.msgnoti {
+  height: 10px;
+  width: 10px;
+  background-color: #04ee10;
+  border-radius: 50%;
+  display:none ;
+}
 @media screen and (max-width:900px) {
   main{
 
@@ -279,9 +286,12 @@ div.user-input button{
 background-color: rgb(207, 207, 153);
 }
 .usernamediv{
-  width:200px;
+  width:100px;
   height: 30px;
-  
+  display:flex;
+  flex-direction: inherit;
+  align-items: stretch;
+  justify-content: space-between;
   margin-left: 40px
 }
 /********************************/
