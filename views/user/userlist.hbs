@@ -5,12 +5,13 @@
   <div class="userprofilediv">
     <div class="usernamediv">
         <span><a class="no-link" href="/message/{{this.Username}}">{{this.Username}}</a></span>
-        <span class="msgnoti" id="{{this.Username}}" ></span>
+        <span class="msgnoti" id="{{this.Username}}" hidden></span>
      </div>
   </div>
   
 </div>
 
 {{/each}}
+ <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/client.js"></script>
 </section>

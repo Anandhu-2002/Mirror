@@ -3,6 +3,7 @@ var chats=document.querySelector('.chat');
 var sender=document.querySelector('#sender');
 var reciver=document.querySelector('#reciver');
 var userMsg=document.querySelector('#user-msg');
+var win=document.querySelector('.msgnoti');
 var senderid=sender.innerHTML;
 var reciverid=reciver.innerHTML;
 var msgget=senderid.concat(reciverid);
@@ -35,5 +36,6 @@ function appendMessage(data,status){
 }
 socket.on(msgget,(data)=>{
     appendMessage(data,'recived');
+    
   
 })

@@ -161,6 +161,13 @@ router.get('/viewuserprofile/:id',async(req,res)=>{
     res.render('user/publicprofile',{user,photos})
   })
 });
+router.get('/message/:uid',(req,res)=>{
+  var reciver=req.params.uid;
+  var sender=req.session.user.Username;
+  res.render('user/message',{reciver,sender})
+
+  
+});
 
 
 

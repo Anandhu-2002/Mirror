@@ -230,7 +230,7 @@ div.user-input button{
   width: 10px;
   background-color: #04ee10;
   border-radius: 50%;
-  display:none ;
+  display:block;
 }
 @media screen and (max-width:900px) {
   main{
@@ -394,7 +394,7 @@ background-color: rgb(207, 207, 153);
     align-items: center;
     gap: 16px;
   }
-  @media (max-width: 767px) {
+   @media (max-width: 767px) {
     .header__buttons--desktop {
       display: none;
     }
@@ -457,5 +457,5 @@ background-color: rgb(207, 207, 153);
   
     .navbar {
       display: none;
-    }
+    } 
   }

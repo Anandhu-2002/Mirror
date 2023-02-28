@@ -34,20 +34,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);
-app.get('/message/:uid',(req,res)=>{
-  var reciver=req.params.uid;
-  var sender=req.session.user.Username;
-  res.render('user/message',{reciver,sender})
-  io.on('connection',(socket)=>{
 
-   socket.on('message',(data)=>{
-       reciverid=data.reciver
-       senderid=data.sender
-       var msgto=reciverid.concat(senderid)
-       socket.broadcast.emit(msgto,{senderid,msg:data.msg});
-   })
-})
-  
+io.on('connection',(socket)=>{
+
+  socket.on('message',(data)=>{
+      reciverid=data.reciver
+      senderid=data.sender
+      var msgto=reciverid.concat(senderid)
+      socket.broadcast.emit(msgto,{senderid,msg:data.msg});
+  })
 })
 
 
