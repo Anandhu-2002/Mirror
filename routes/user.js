@@ -63,6 +63,7 @@ router.post('/signup', (req, res) => {
 
 router.post('/verify-otp', async (req, res) => {
   userHelpers.VerifyOtp(req.body.mailid).then((response) => {
+    console.log(response.otp);
     res.json(response);
   })
 });

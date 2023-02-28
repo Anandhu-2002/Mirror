@@ -162,7 +162,7 @@ div.chat-window{
   border-radius: 10px;
 }
 div.chat{
-  height: 75vh;
+  height: 70vh;
   padding: 20px;
   overflow-y: auto;
 }
@@ -255,12 +255,130 @@ div.user-input button{
     }
 
   div.chat{
-      height: 80vh;
+      height: 75vh;
       padding: 0;
       overflow-y: auto;
   }
+  div.chat-window{
+
+    border-radius: 0px;
+  }
+  div.message{
+    color: var(--dark-gray);
+    background-color: var(--white);
+    padding: 5px 15px;
+    max-width: 300px;
+    margin-bottom:15px ;
+    border-radius: 10px 50px 50px 10px;
+  
+  }
+  div.message p{
+    font-size: 16px;
+  }
+  div.send{
+    margin-left: auto;
+    color: var(--white);
+    background-color: var(--light-blue);
+    border-radius: 50px 10px 10px 50px;
+    text-align: right;
+  }
+  
+  div.user-input{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  div.user-input input{
+    font-size: 16px;
+    color: var(--light-gray);
+    background-color: var(--input);
+    padding:10px 20px;
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 50px 0 0 50px;
+  
+  }
+  div.user-input button{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px 15px;
+    border: none;
+    outline: none;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    background-color: var(--light-blue);
+    border-radius: 0 50px 50px 0;
+  }
   
 }
+/* @media (min-width: 620px) {
+  main{
+
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    
+}
+
+div.msgcontainer{
+    position: relative;
+    padding: 0;
+}
+
+div.message{
+    max-width: 200px;
+}
+
+main header button{
+  display: block;
+  }
+
+div.chat{
+    height: 75vh;
+    padding: 0;
+    overflow-y: auto;
+}
+div.chat-window{
+
+  border-radius: 0px;
+}
+}
+
+@media (min-width: 768px) {
+  main{
+
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    
+}
+
+div.msgcontainer{
+    position: relative;
+    padding: 0;
+}
+
+div.message{
+    max-width: 200px;
+}
+
+main header button{
+  display: block;
+  }
+
+div.chat{
+    height: 75vh;
+    padding: 0;
+    overflow-y: auto;
+}
+div.chat-window{
+
+  border-radius: 0px;
+}
+}  */
 /******************/
 /*user list*/
 .no-link {
@@ -296,7 +414,7 @@ background-color: rgb(207, 207, 153);
 }
 /********************************/
 /* Header Navbar */
-.header {
+/* .header {
     width: 100%;
     height: var(--header-height);
     background-color: var(--primary);
@@ -399,7 +517,7 @@ background-color: rgb(207, 207, 153);
       display: none;
     }
   
-    /* Fix post medias indicators bugs on mobile */
+    Fix post medias indicators bugs on mobile
     .post__medias {
       gap: 1px;
     }
@@ -458,4 +576,4 @@ background-color: rgb(207, 207, 153);
     .navbar {
       display: none;
     } 
-  }
+  } */
