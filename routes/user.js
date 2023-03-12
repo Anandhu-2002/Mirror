@@ -106,6 +106,24 @@ router.post('/photos', async (req, res) => {
 
   })
 });
+router.get('/editphoto/:id',(req,res)=>{
+  res.render('user/editphoto',{photo:req.params.id})
+});
+router.get('/removePhoto/:id',async(req,res)=>{
+  let photoId=req.params.id
+  await userHelpers.removePhoto(photoId)
+  let imgpath='./public/photos/' + photoId + '.jpg'
+  fs.unlink(imgpath,(err)=>{
+    if (!err) {
+      res.redirect('/profile')
+
+    } else {
+      console.log('error')
+    }
+
+
+  })
+});
 router.get('/userlist',async(req,res)=>{
   let users=await userHelpers.findalluser()
   res.render('user/userlist',{users});
@@ -136,21 +154,7 @@ router.get('/profile',verifyLogin,async(req,res)=>{
   
 
 })
-router.get('/removePhoto/:id',async(req,res)=>{
-  let photoId=req.params.id
-  await userHelpers.removePhoto(photoId)
-  let imgpath='./public/photos/' + photoId + '.jpg'
-  fs.unlink(imgpath,(err)=>{
-    if (!err) {
-      res.redirect('/profile')
 
-    } else {
-      console.log('error')
-    }
-
-
-  })
-});
 router.get('/viewuserprofile/:id',async(req,res)=>{
   
   let userid=req.params.id
@@ -162,9 +166,13 @@ router.get('/viewuserprofile/:id',async(req,res)=>{
     res.render('user/publicprofile',{user,photos})
   })
 });
-router.get('/message/:uid',(req,res)=>{
+router.get('/message/:uid',async(req,res)=>{
   var reciver=req.params.uid;
   var sender=req.session.user.Username;
+  let msg=await userHelpers.Messagehistory(sender,reciver)
+  if(msg.chat!=false){
+    console.log(msg);
+  }
   res.render('user/message',{reciver,sender})
 
   

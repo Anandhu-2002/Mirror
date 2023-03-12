@@ -1,4 +1,222 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+/***********login*********************/
+
+:root{
+  --inp: #09c1ce;
+  --inpdark: #00eeff;
+  --bglight:#ddd8d8;
+  --cardlight:#faeaea;
+  --bgdark:#161313;
+  --carddark:rgb(24, 19, 19);
+ 
+  }
+
+  .loginmain{
+  background-color: var(--bgdark);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+
+  
+  
+}
+.loginbody{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.logincontainer{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 60vh;
+  width: 30vw;
+  background-color:var(--carddark);   
+  margin: auto;   
+  padding: 10%;
+
+  /* box-shadow: 5px 10px 15px #000000; */
+  box-shadow: 0px 15px 25px  #000000;;
+
+}
+
+
+
+.logininput{
+  color:var(--primary) ;
+  font-size: 20px;
+  background:transparent;
+  border:none;
+  border-bottom: 2px solid var(--inp);
+  outline: none;
+  margin-top: 30px;
+  width: 320px;
+  
+  
+  
+}
+
+.logininput::placeholder{
+  font-size: 20px;
+  font-weight: 0px;
+  color:var(--inp);
+}
+.logininput:focus::placeholder{
+  color:gray;
+}
+
+.logininput:focus{
+  border:none;
+  outline: none;
+  border-bottom: 3px solid var(--inpdark);
+  
+
+}
+
+.btn-login{
+  padding: 0.3rem 8.2rem;
+  margin-left: 3px;
+  border-radius: 15px;
+  transform: translate(0%,-90%);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .2s ease;
+  background-color: var(--inp);
+  color: var(--carddark);
+  margin-top: 4rem;
+  }
+  .btn-login:hover{
+  background: transparent;
+  border-color: var(--inp);
+  color: var(--inp);
+  }
+  .btn-signup{
+     
+      text-decoration:none;
+      padding: 0.3rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 2px solid transparent;
+      border-radius: 28px;
+      outline: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all .2s ease;
+      background-color: var(--inp);
+      color: var(--carddark);
+      margin-left: 32%;
+      
+  }
+  .btn-signup:hover{
+    background: transparent;
+    border-color: var(--inp);
+    color: var(--inp);
+    }
+  .loginspan{
+      color: var(--inp);
+      font-weight: 600;
+      margin-left: 45%;
+
+      }
+  .inv{
+    color: var(--inp);
+    font-weight: 100;
+    margin-left: 25px;
+  }
+.logintheme-btn{
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+.logintheme{
+  fill: #ddd8d8;
+}
+.body.light .loginmain{
+background-color: var(--bglight);
+
+}
+.body.light .logincontainer{
+  background-color: var(--cardlight);
+  
+}
+.body.light .logintheme{
+  fill: #000000;
+  
+}
+
+@media screen and (max-width:450px) {
+  .loginmain{
+    
+    width: 100%;
+    height: 110%;
+     }
+
+  .loginbody{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-40%);
+  }
+
+  .logincontainer{
+      top:40%;
+      height: 50vh;
+      width: 85vw;
+      
+  }
+  
+  
+  
+  .logininput{
+      
+      margin-top: 30px;
+      width: 255px;            
+  }
+  
+
+
+  .btn-login{
+      
+      padding: 0.3rem 6.2rem;
+      margin-left: 3px;
+     
+      transform: translate(0%,-90%);
+  }
+  .btn-signup{
+    margin-left: 28%;
+  }
+}
+@media screen and (min-width:450px) and (max-width:1200px) {
+
+  .logincontainer{
+
+      height: 380px;
+      width: 400px;
+      
+  }
+  
+  
+  
+  .logininput{
+      
+      margin-top: 30px;
+      width: 320px;            
+  }
+  
+} 
+
+
+/*************************************/
 
 .gradient-custom-2 {
   /* fallback for old browsers */
@@ -19,13 +237,7 @@
   padding: 0;
 }
 
-*,
-button,
-input,
-select,
-textarea {
-  font-family: 'Roboto', sans-serif;
-}
+
 .cardsdiv{
   display: flex;
   flex-wrap: wrap;
@@ -162,7 +374,7 @@ div.chat-window{
   border-radius: 10px;
 }
 div.chat{
-  height: 70vh;
+  height: 75vh;
   padding: 20px;
   overflow-y: auto;
 }
@@ -230,7 +442,7 @@ div.user-input button{
   width: 10px;
   background-color: #04ee10;
   border-radius: 50%;
-  display:block;
+  display:none ;
 }
 @media screen and (max-width:900px) {
   main{
@@ -255,66 +467,13 @@ div.user-input button{
     }
 
   div.chat{
-      height: 75vh;
+      height: 80vh;
       padding: 0;
       overflow-y: auto;
   }
-  div.chat-window{
-
-    border-radius: 0px;
-  }
-  div.message{
-    color: var(--dark-gray);
-    background-color: var(--white);
-    padding: 5px 15px;
-    max-width: 300px;
-    margin-bottom:15px ;
-    border-radius: 10px 50px 50px 10px;
-  
-  }
-  div.message p{
-    font-size: 16px;
-  }
-  div.send{
-    margin-left: auto;
-    color: var(--white);
-    background-color: var(--light-blue);
-    border-radius: 50px 10px 10px 50px;
-    text-align: right;
-  }
-  
-  div.user-input{
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-between;
-    padding: 50px;
-  }
-  div.user-input input{
-    font-size: 16px;
-    color: var(--light-gray);
-    background-color: var(--input);
-    padding:10px 20px;
-    outline: none;
-    border: none;
-    width: 100%;
-    border-radius: 50px 0 0 50px;
-  
-  }
-  div.user-input button{
-    font-size: 16px;
-    font-weight: 600;
-    padding: 5px 15px;
-    border: none;
-    outline: none;
-    letter-spacing: 0.5px;
-    color: var(--white);
-    background-color: var(--light-blue);
-    border-radius: 0 50px 50px 0;
-  }
   
 }
-
+/******************/
 /*user list*/
 .no-link {
   color:inherit;
@@ -447,48 +606,15 @@ background-color: rgb(207, 207, 153);
     align-items: center;
     gap: 16px;
   }
-   @media (max-width: 767px) {
+  @media (max-width: 767px) {
     .header__buttons--desktop {
       display: none;
     }
   
-    Fix post medias indicators bugs on mobile
-    .post__medias {
-      gap: 1px;
-    }
+
   }
   
-  @media (min-width: 620px) {
-    .content-container {
-      padding: 30px 0 24px;
-    }
-  
-    .content {
-      gap: 24px;
-    }
-  
-    .stories {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .stories::after {
-      content: none;
-    }
-  
-    .posts {
-      gap: 24px;
-    }
-    .post {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .post__footer {
-      padding: 4px 8px 12px;
-    }
-    .post__date-time {
-      margin-top: 6px;
-    }
-  }
+
   
   @media (min-width: 768px) {
     :root {
@@ -510,5 +636,5 @@ background-color: rgb(207, 207, 153);
   
     .navbar {
       display: none;
-    } 
+    }
   }

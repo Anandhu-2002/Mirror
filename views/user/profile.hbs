@@ -46,8 +46,10 @@
             <div class="cardsdiv">
               {{#each photos}}
               <div class="carddiv">
-                <img src="/photos/{{this._id}}.jpg"
+                <a href="/editphoto/{{this._id}}">
+                  <img src="/photos/{{this._id}}.jpg"
                   class="img">
+                </a>
               </div>
               {{/each}}
 

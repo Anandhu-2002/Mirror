@@ -145,6 +145,53 @@ module.exports={
       })
       
     })
-  }
+  },
+  Message:(data,username)=>{
+   
+    var sender=username;
+    var reciver=data.reciver;     
+    let msg={        
+        [sender]:data.msg        
+    }
+    let users=[sender,reciver]
+    let usersrev=[reciver,sender]
+    return new Promise(async(resolve,reject)=>{
+        let chat=await db.get().collection(collections.MESSAGE_COLLECTION).findOne({$or:[{users:users},{users:usersrev}]})
 
+        if(chat){
+        
+            db.get().collection(collections.MESSAGE_COLLECTION).updateOne({$or:[{users:users},{users:usersrev}]},{
+               
+                    $set:{"message":msg}
+                
+            }).then(()=>{
+                resolve()
+            })
+      
+        }else{
+            let msgObj={
+               users:users,
+              message:msg
+            }
+            db.get().collection(collections.MESSAGE_COLLECTION).insertOne(msgObj).then((response)=>{
+                resolve()
+            })
+           }
+        
+    })
+},
+Messagehistory:(sender,reciver)=>{
+  let users=[sender,reciver]
+  let usersrev=[reciver,sender]
+  return new Promise(async(resolve,reject)=>{
+      let chat=await db.get().collection(collections.MESSAGE_COLLECTION).findOne({$or:[{users:users},{users:usersrev}]})
+      if(chat){
+        resolve(chat.message)
+      }
+      else{
+        resolve({chat:false})
+      }
+  })
+},
 }
+

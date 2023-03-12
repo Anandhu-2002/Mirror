@@ -12,7 +12,8 @@ var adminRouter = require('./routes/admin');
 const hbs=require('express-handlebars');
 var db=require('./dbconnection/connection');
 
-var fileUpload=require('express-fileupload')
+var fileUpload=require('express-fileupload');
+const userHelpers = require('./helpers/user-helpers');
 var app = express();
 
 const server=http.createServer(app)
@@ -42,6 +43,7 @@ io.on('connection',(socket)=>{
       senderid=data.sender
       var msgto=reciverid.concat(senderid)
       socket.broadcast.emit(msgto,{senderid,msg:data.msg});
+      userHelpers.Message(data,senderid)
   })
 })
 
