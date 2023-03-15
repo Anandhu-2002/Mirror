@@ -6,8 +6,8 @@
   --inpdark: #00eeff;
   --bglight:#ddd8d8;
   --cardlight:#faeaea;
-  --bgdark:#161313;
-  --carddark:rgb(24, 19, 19);
+  --bgdark:#0e0c0c;
+  --carddark:rgb(0, 0, 0);
  
   }
 
@@ -280,6 +280,7 @@ img {
 .msgmain header{
   background-color: var(--carddark);
   color: var(--inp);
+  border-bottom:solid 0.01px var(--inpdark) ;
   padding: 7px 20px;
   display: flex;
   flex-direction: row;
@@ -334,6 +335,10 @@ div.message{
   background-color: var(--white);
   padding: 5px 15px;
   max-width: 300px;
+  width: fit-content;
+  width: auto;
+  min-width:min-content;
+  max-width: max-content;
   margin-bottom:15px ;
   border-radius: 10px 50px 50px 10px;
 
@@ -365,7 +370,7 @@ div.user-input input{
   border: none;
   width: 100%;
   border-radius: 50px 0 0 50px;
-  box-shadow: 0px 15px 25px  #000000;
+  box-shadow: 0px 6px 20px var(--dark-gray);
 
 }
 div.user-input button{
@@ -376,8 +381,9 @@ div.user-input button{
   outline: none;
   letter-spacing: 0.5px;
   color: var(--white);
-  background-color: var(--light-blue);
+  background-color: var(--inp);
   border-radius: 0 50px 50px 0;
+  box-shadow: 0px 6px 20px var(--dark-gray);
 }
 .msgnoti {
   height: 10px;
@@ -475,8 +481,9 @@ div.recived{
   div.message{
     color: var(--dark-gray);
     background-color: var(--white);
-    padding: 3px 15px;
-    max-width: 150px;
+    padding: 0px 0px;
+    max-width: 0px;
+
     margin-bottom:10px ;
     border-radius: 50px 50px 50px 50px;
   
