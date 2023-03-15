@@ -24,13 +24,25 @@
 //     localStorage.setItem('theme', 'light');
 //   }
 // });
-themeChanger=document.querySelector('.logintheme-btn');
 var body=document.querySelector('.body');
-themeChanger.addEventListener('click', () =>{
-    if(body.classList.contains != "light"){
+document.onload = setInitialTheme(localStorage.getItem('theme'));
+function setInitialTheme(themeKey) {
+   
+    if (themeKey === 'light') {
         body.classList.toggle("light")
+    } else {
+       body.classList.remove("light")
+    }
+  }
+themeChanger=document.querySelector('.logintheme-btn');
+
+themeChanger.addEventListener('click', () =>{
+    body.classList.toggle('light');
+    if(body.classList.contains("light")){
+        
+        localStorage.setItem('theme', 'light');
     }
     else{
-        body.classList.remove("light")
+        localStorage.setItem('theme', 'dark');
     }
 })

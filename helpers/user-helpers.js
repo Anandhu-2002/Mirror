@@ -162,7 +162,7 @@ module.exports={
         
             db.get().collection(collections.MESSAGE_COLLECTION).updateOne({$or:[{users:users},{users:usersrev}]},{
                
-                    $set:{"message":msg}
+                    $push:{"message":data}
                 
             }).then(()=>{
                 resolve()
@@ -171,7 +171,7 @@ module.exports={
         }else{
             let msgObj={
                users:users,
-              message:msg
+              message:[data]
             }
             db.get().collection(collections.MESSAGE_COLLECTION).insertOne(msgObj).then((response)=>{
                 resolve()

@@ -166,17 +166,7 @@ router.get('/viewuserprofile/:id',async(req,res)=>{
     res.render('user/publicprofile',{user,photos})
   })
 });
-router.get('/message/:uid',async(req,res)=>{
-  var reciver=req.params.uid;
-  var sender=req.session.user.Username;
-  let msg=await userHelpers.Messagehistory(sender,reciver)
-  if(msg.chat!=false){
-    console.log(msg);
-  }
-  res.render('user/message',{reciver,sender})
 
-  
-});
 
 
 

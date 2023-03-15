@@ -45,8 +45,28 @@ io.on('connection',(socket)=>{
       socket.broadcast.emit(msgto,{senderid,msg:data.msg});
       userHelpers.Message(data,senderid)
   })
-})
 
+})
+app.get('/message/:uid',async(req,res)=>{
+  var reciver=req.params.uid;
+  var sender=req.session.user.Username;
+  let msg=await userHelpers.Messagehistory(sender,reciver)
+ 
+  if(msg.chat!=false){
+    console.log(msg);
+    io.on('connection',(socket)=>{
+       for(let i=0;i<msg.length;i++){
+        socket.emit('chathistory',{msg:msg[i]})
+       }
+       
+      
+    })
+    
+  }
+  res.render('user/message',{reciver,sender})
+
+  
+});
 
 
 
