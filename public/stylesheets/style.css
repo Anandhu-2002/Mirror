@@ -1,86 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 /***********login*********************/
 
-:root{
+:root {
+  --light-blue: #41aae7;
   --inp: #09c1ce;
   --inpdark: #00eeff;
-  --bglight:#ddd8d8;
-  --cardlight:#faeaea;
-  --bgdark:#0e0c0c;
-  --carddark:rgb(0, 0, 0);
- 
-  }
+  --bglight: #c7baba;
+  --cardlight: #faeaea;
+  --bgdark: #0e0c0c;
+  --carddark: rgb(0, 0, 0);
 
-  .loginmain{
+}
+
+.loginmain {
   background-color: var(--bgdark);
   position: absolute;
   width: 100%;
   height: 100%;
-  
 
-  
-  
+
+
+
 }
-.loginbody{
+
+.loginbody {
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-.logincontainer{
+
+.logincontainer {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   height: 60vh;
   width: 30vw;
-  background-color:var(--carddark);   
-  margin: auto;   
+  background-color: var(--carddark);
+  margin: auto;
   padding: 10%;
 
   /* box-shadow: 5px 10px 15px #000000; */
-  box-shadow: 0px 15px 25px  #000000;
+  box-shadow: 0px 15px 25px #000000;
 
 }
 
 
 
-.logininput{
-  color:var(--inp) ;
+.logininput {
+  color: var(--inp);
   font-size: 20px;
-  background:transparent;
-  border:none;
+  background: transparent;
+  border: none;
   border-bottom: 2px solid var(--inp);
   outline: none;
   margin-top: 30px;
   width: 320px;
-  
-  
-  
+
+
+
 }
 
-.logininput::placeholder{
+.logininput::placeholder {
   font-size: 20px;
   font-weight: 0px;
-  color:var(--inp);
-}
-.logininput:focus::placeholder{
-  color:gray;
+  color: var(--inp);
 }
 
-.logininput:focus{
-  border:none;
+.logininput:focus::placeholder {
+  color: gray;
+}
+
+.logininput:focus {
+  border: none;
   outline: none;
   border-bottom: 3px solid var(--inpdark);
-  
+
 
 }
 
-.btn-login{
+.btn-login {
   padding: 0.3rem 8.2rem;
   margin-left: 3px;
   border-radius: 15px;
-  transform: translate(0%,-90%);
+  transform: translate(0%, -90%);
   font-size: 1rem;
   font-weight: 600;
   border: 2px solid transparent;
@@ -91,46 +95,52 @@
   background-color: var(--inp);
   color: var(--carddark);
   margin-top: 4rem;
-  }
-  .btn-login:hover{
+}
+
+.btn-login:hover {
   background: transparent;
   border-color: var(--inp);
   color: var(--inp);
-  }
-  .btn-signup{
-     
-      text-decoration:none;
-      padding: 0.3rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border: 2px solid transparent;
-      border-radius: 28px;
-      outline: none;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: all .2s ease;
-      background-color: var(--inp);
-      color: var(--carddark);
-      margin-left: 32%;
-      
-  }
-  .btn-signup:hover{
-    background: transparent;
-    border-color: var(--inp);
-    color: var(--inp);
-    }
-  .loginspan{
-      color: var(--inp);
-      font-weight: 600;
-      margin-left: 45%;
+}
 
-      }
-  .inv{
-    color: var(--inp);
-    font-weight: 100;
-    margin-left: 25px;
-  }
-.logintheme-btn{
+.btn-signup {
+
+  text-decoration: none;
+  padding: 0.3rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 28px;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .2s ease;
+  background-color: var(--inp);
+  color: var(--carddark);
+  margin-left: 32%;
+
+}
+
+.btn-signup:hover {
+  background: transparent;
+  border-color: var(--inp);
+  color: var(--inp);
+}
+
+.loginspan {
+  color: var(--inp);
+  font-weight: 600;
+  margin-left: 45%;
+
+}
+
+.inv {
+  color: var(--inp);
+  font-weight: 100;
+  margin-left: 25px;
+}
+
+.logintheme-btn {
   position: absolute;
   top: 3%;
   right: 3%;
@@ -138,21 +148,20 @@
   background: transparent;
   border: none;
 }
-.logintheme{
-  fill: #ddd8d8;
-}
-.body.light .loginmain{
+
+.body.light .loginmain {
   background-color: var(--bglight);
-  
-  }
-.body.light .logincontainer
- {
-  background-color: var(--cardlight);
-  
+
 }
-.body.light .logintheme{
+
+.body.light .logincontainer {
+  background-color: var(--cardlight);
+
+}
+
+.body.light .logintheme {
   fill: #000000;
-  
+
 }
 
 
@@ -160,16 +169,7 @@
 
 /*************************************/
 
-.gradient-custom-2 {
-  /* fallback for old browsers */
-  background: #fbc2eb;
-  
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
-  
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
-  }
+
 /* CSS Reset */
 *,
 *::after,
@@ -180,52 +180,27 @@
 }
 
 
-.cardsdiv{
+.cardsdiv {
   display: flex;
   flex-wrap: wrap;
   gap: 1px;
 }
-.carddiv{
+
+.carddiv {
   width: 30%;
   aspect-ratio: 1/1;
   flex-grow: 1;
 
- 
+
 }
-.img{
+
+.img {
   width: 100%;
   aspect-ratio: 1/1;
- 
+
 }
 
-:root {
-  --primary: hsl(0, 0%, 100%);
-  --secondary: hsl(0, 0%, 98%);
-  --border: hsl(0, 0%, 86%);
 
-  --story-border: hsl(0, 0%, 78%);
-  --img-border: hsla(0, 0%, 0%, 0.1);
-
-  --text-dark: hsl(0, 0%, 15%);
-  --text-light: hsl(0, 0%, 60%);
-
-  --like: hsl(355, 82%, 61%);
-  --link: hsl(204, 100%, 48%);
-
-  --header-height: 44px;
-  --nav-height: 44px;
-}
-:root.darkTheme {
-  --primary: hsl(0, 0%, 0%);
-  --secondary: hsl(0, 0%, 2%);
-  --border: hsl(0, 0%, 15%);
-
-  --story-border: hsl(0, 0%, 44%);
-  --img-border: hsla(0, 0%, 100%, 0.1);
-
-  --text-dark: hsl(0, 0%, 98%);
-  --text-light: hsl(0, 0%, 60%);
-}
 
 /* -------------------------------------------------- */
 
@@ -247,60 +222,65 @@ img {
 }
 
 
-  /* Chat */
-  /* font-family: 'Poppins', sans-serif; */
-:root{
-  --light-blue:#41aae7;
-  --light-gray:#7E878c;
-  --dark-gray:#2e2a2a;
-  --input:#1f1d1d;
-  --white:#ffffff;
-  
+/* Chat */
+/* font-family: 'Poppins', sans-serif; */
+:root {
+
+  --light-gray: #7E878c;
+  --dark-gray: #2e2a2a;
+  --input: #1f1d1d;
+  --white: #ffffff;
+
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
   display: none;
 }
 
 
-.msgbg{
-  
-  height: 100vh;  
+.msgbg {
+
+  height: 100vh;
   background-color: var(--bgdark);
 }
-.msgmain{
+
+.msgmain {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 80%;
   overflow: hidden;
   border-radius: 0px;
 
 }
-.msgmain header{
+
+.msgmain header {
   background-color: var(--carddark);
   color: var(--inp);
-  border-bottom:solid 0.01px var(--inpdark) ;
+  border-bottom: solid 0.01px var(--inpdark);
   padding: 7px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-.msgmain header button{
+
+.msgmain header button {
   background-color: transparent;
   border: none;
   outline: none;
   display: none;
 }
-div.tittle{
+
+div.tittle {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
 
-div.msgcontainer{
+div.msgcontainer {
   background-color: var(--carddark);
   padding: 10px;
   display: flex;
@@ -309,18 +289,20 @@ div.msgcontainer{
   justify-content: flex-start;
 }
 
-div.chat-window{
+div.chat-window {
   width: 100%;
-  background-color:var(--carddark);
+  background-color: var(--carddark);
   border-radius: 10px;
-  box-shadow: 0px 15px 25px  #000000;
+
 }
-div.chat{
+
+div.chat {
   height: 70vh;
   padding: 20px;
   overflow-y: auto;
 }
-div.user-join{
+
+div.user-join {
   font-size: 0.9rem;
   color: var(--dark-gray);
   background-color: var(--white);
@@ -330,23 +312,26 @@ div.user-join{
   margin: 0 auto;
   margin-bottom: 15px;
 }
-div.message{
+
+div.message {
   color: var(--dark-gray);
   background-color: var(--white);
   padding: 5px 15px;
   max-width: 300px;
   width: fit-content;
   width: auto;
-  min-width:min-content;
+  min-width: min-content;
   max-width: max-content;
-  margin-bottom:15px ;
+  margin-bottom: 15px;
   border-radius: 10px 50px 50px 10px;
 
 }
-div.message p{
+
+div.message p {
   font-size: 16px;
 }
-div.send{
+
+div.send {
   margin-left: auto;
   color: var(--white);
   background-color: var(--light-blue);
@@ -354,18 +339,19 @@ div.send{
   text-align: right;
 }
 
-div.user-input{
+div.user-input {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: space-between;
   padding: 20px;
 }
-div.user-input input{
+
+div.user-input input {
   font-size: 16px;
   color: var(--light-gray);
   background-color: var(--carddark);
-  padding:10px 20px;
+  padding: 10px 20px;
   outline: none;
   border: none;
   width: 100%;
@@ -373,7 +359,8 @@ div.user-input input{
   box-shadow: 0px 6px 20px var(--dark-gray);
 
 }
-div.user-input button{
+
+div.user-input button {
   font-size: 16px;
   font-weight: 600;
   padding: 5px 15px;
@@ -385,171 +372,182 @@ div.user-input button{
   border-radius: 0 50px 50px 0;
   box-shadow: 0px 6px 20px var(--dark-gray);
 }
+
 .msgnoti {
   height: 10px;
   width: 10px;
   background-color: #04ee10;
   border-radius: 50%;
-  display:none ;
+  display: none;
 }
-.body.light .msgbg{
-background-color: var(--bglight);
+
+.body.light .msgbg {
+  background-color: var(--bglight);
 
 }
 
-.body.light div.msgcontainer
- {
+.body.light div.msgcontainer {
   background-color: var(--cardlight);
-  
-}
-.body.light div.chat-window
- {
-  background-color: var(--cardlight);
-  
-}
-.body.light .msgmain header
- {
-  background-color: var(--cardlight);
-  
+
 }
 
-.body.light div.user-input input{
-  
+.body.light div.chat-window {
+  background-color: var(--cardlight);
+
+}
+
+.body.light .msgmain header {
+  background-color: var(--cardlight);
+
+}
+
+.body.light div.user-input input {
+
   color: var(--light-gray);
   background-color: var(--cardlight);
-  
+
 
 }
-div.recived{
+
+div.recived {
   color: var(--dark-gray);
   background-color: #b6babd;
 
 }
+
 @media screen and (max-width:450px) {
-  .loginmain{
-    
+  .loginmain {
+
     width: 100%;
     height: 110%;
-     }
+  }
 
-  .loginbody{
+  .loginbody {
     position: absolute;
     top: 35%;
     left: 50%;
-    transform: translate(-50%,-40%);
+    transform: translate(-50%, -40%);
   }
 
-  .logincontainer{
-      top:40%;
-      height: 50vh;
-      width: 85vw;
-      
+  .logincontainer {
+    top: 40%;
+    height: 50vh;
+    width: 85vw;
+
   }
-  
-  
-  
-  .logininput{
-      
-      margin-top: 30px;
-      width: 255px;            
-  }
-  
 
 
-  .btn-login{
-      
-      padding: 0.3rem 6.2rem;
-      margin-left: 3px;
-     
-      transform: translate(0%,-90%);
+
+  .logininput {
+
+    margin-top: 30px;
+    width: 255px;
   }
-  .btn-signup{
+
+
+
+  .btn-login {
+
+    padding: 0.3rem 6.2rem;
+    margin-left: 3px;
+
+    transform: translate(0%, -90%);
+  }
+
+  .btn-signup {
     margin-left: 28%;
   }
- 
-  .msgmain{
-    
+
+  .msgmain {
+
     top: 0%;
     left: 0%;
     right: 0%;
-    transform: translate(0%,0%);
+    transform: translate(0%, 0%);
     width: 100%;
     overflow: hidden;
     border-radius: 0px;
-  
+
   }
-  div.message{
+
+  div.message {
     color: var(--dark-gray);
     background-color: var(--white);
     padding: 0px 0px;
     max-width: 0px;
 
-    margin-bottom:10px ;
+    margin-bottom: 10px;
     border-radius: 50px 50px 50px 50px;
-  
+
   }
-  div.send{
+
+  div.send {
     margin-left: auto;
     color: var(--white);
     background-color: var(--light-blue);
     border-radius: 50px 50px 50px 50px;
-    text-align:right ;
+    text-align: right;
   }
 
 }
+
 @media screen and (min-width:450px) and (max-width:1200px) {
 
-  .logincontainer{
+  .logincontainer {
 
-      height: 380px;
-      width: 400px;
-      
+    height: 380px;
+    width: 400px;
+
   }
-  
-  
-  
-  .logininput{
-      
-      margin-top: 30px;
-      width: 320px;            
+
+
+
+  .logininput {
+
+    margin-top: 30px;
+    width: 320px;
   }
-  .msgmain{
-    
+
+  .msgmain {
+
     top: 0%;
     left: 0%;
     right: 0%;
-    transform: translate(0%,0%);
+    transform: translate(0%, 0%);
     width: 100%;
     overflow: hidden;
     border-radius: 0px;
-  
+
   }
-  div.message{
+
+  div.message {
     color: var(--dark-gray);
     background-color: var(--white);
     padding: 3px 15px;
     max-width: 150px;
-    margin-bottom:10px ;
+    margin-bottom: 10px;
     border-radius: 50px 50px 50px 50px;
-  
+
   }
-  div.send{
+
+  div.send {
     margin-left: auto;
     color: var(--white);
     background-color: var(--light-blue);
     border-radius: 50px 50px 50px 50px;
-    text-align:right ;
+    text-align: right;
   }
-  
-} 
+
+}
 
 /******************/
 /*user list*/
 .no-link {
-  color:inherit;
-  text-decoration:none;
-  }
-.userouterdiv{
+  color: inherit;
+  text-decoration: none;
+}
+
+.userouterdiv {
   border: 1px;
   border-color: black;
   width: 100%;
@@ -558,153 +556,101 @@ div.recived{
   margin-top: 4px;
   padding-top: 5px;
 
-  
+
 }
-.userprofilediv{
+
+.userprofilediv {
   width: 30px;
   height: 30px;
-  border-radius: 50%;     
+  border-radius: 50%;
   margin-left: 4px;
-background-color: rgb(207, 207, 153);
+  background-color: rgb(207, 207, 153);
 }
-.usernamediv{
-  width:100px;
+
+.usernamediv {
+  width: 100px;
   height: 30px;
-  display:flex;
+  display: flex;
   flex-direction: inherit;
   align-items: stretch;
   justify-content: space-between;
   margin-left: 40px
 }
+
 /********************************/
 /* Header Navbar */
+.bg {
+  background-color: var(--bgdark);
+}
+
 .header {
-    width: 100%;
-    height: var(--header-height);
-    background-color: var(--primary);
-  
-    display: flex;
-    justify-content: center;
-  
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-  }
-  .header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-  
-    width: 100%;
-    height: 1px;
-    background-color: var(--border);
-  }
-  
-  .header__content {
-    width: 100%;
-    max-width: 975px;
-  
-    padding: 0 14px;
-  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .header__home {
-    margin-top: 5px;
-  }
-  .header__theme-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  .header__theme-button-sun {
-    display: none;
-  }
-  .header__theme-button-moon {
-    display: unset;
-  }
-  :root.darkTheme .header__theme-button-sun {
-    display: unset;
-  }
-  :root.darkTheme .header__theme-button-moon {
-    display: none;
-  }
-  
-  .header__search {
-    width: 216px;
-    height: 28px;
-  
-    display: none;
-    align-items: center;
-    position: relative;
-  }
-  .header__search svg {
-    width: 12px;
-    height: 12px;
-  
-    position: absolute;
-    left: 8px;
-  }
-  .header__search input {
-    width: 100%;
-    height: 100%;
-    background-color: var(--secondary);
-  
-    padding: 4px 10px 4px 28px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    outline: none;
-  
-    font-size: 12px;
-    font-weight: 300;
-    text-decoration: none;
-    color: var(--text-light);
-  
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .header__search input:focus {
-    color: var(--text-dark);
-  }
-  
-  .header__buttons {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  @media (max-width: 767px) {
-    .header__buttons--desktop {
-      display: none;
-    }
-  
+  width: 100%;
+  height: 60px;
+  background-color: var(--light-blue);
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 
-  }
-  
 
-  
-  @media (min-width: 768px) {
-    :root {
-      --header-height: 54px;
-      --nav-height: 0px;
-    }
-  
-    .header__content {
-      padding: 0 20px;
-    }
-  
-    .header__search {
-      display: flex;
-    }
-  
-    .header__buttons--mobile {
-      display: none;
-    }
-  
-    .navbar {
-      display: none;
-    }
-  }
+.header__content {
+  width: 100%;
+
+  padding: 0 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.header__home {
+  margin-top: 5px;
+  text-decoration: none;
+  color: var(--bgdark);
+}
+
+.theme-btn {
+
+  cursor: pointer;
+  background: transparent;
+  border: none;
+
+}
+
+.theme-btn-moon {
+  display: none;
+}
+
+.fill {
+  fill: var(--bgdark);
+  stroke: var(--bgdark);
+}
+
+.body.light .bg {
+  background-color: var(--white);
+}
+
+.body.light .theme-btn-sun {
+  display: none;
+}
+
+.body.light .theme-btn-moon {
+  display: unset;
+}
+
+
+
+
+.header__buttons {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+
+}
+
+
+.theme-btn-sun {
+  fill: #ddd8d8;
+}
