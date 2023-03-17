@@ -1,17 +1,22 @@
 <section>
+  <span  id="uname" hidden>{{uname}}</span>
     {{#each users}}
 
 <div class="userouterdiv">
   <div class="userprofilediv">
     <div class="usernamediv">
-        <span><a class="no-link" href="/message/{{this.Username}}">{{this.Username}}</a></span>
-        <span class="msgnoti" id="{{this.Username}}" hidden></span>
+        <span><a class="no-link"  href="/message/{{this.Username}}">{{this.Username}}</a></span>
+        
+        <span  id="user" hidden>{{this.Username}}</span>
      </div>
   </div>
   
 </div>
 
 {{/each}}
- <script src="/socket.io/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+
+ 
 <script src="/javascripts/client.js"></script>
 </section>

@@ -126,7 +126,7 @@ router.get('/removePhoto/:id',async(req,res)=>{
 });
 router.get('/userlist',async(req,res)=>{
   let users=await userHelpers.findalluser()
-  res.render('user/userlist',{users});
+  res.render('user/userlist',{users,uname:req.session.user.Username});
 })
 router.get('/search',verifyLogin,(req,res)=>{
   res.render('user/search')
@@ -166,7 +166,20 @@ router.get('/viewuserprofile/:id',async(req,res)=>{
     res.render('user/publicprofile',{user,photos})
   })
 });
+router.get('/follow/:id',async(req,res)=>{
+  let follow=req.params.id
+  let user=req.session.user.Username
+  userHelpers.FollowUser(user,follow)
 
+});
+router.get('/message/:uid',async(req,res)=>{
+  var reciver=req.params.uid;
+  var sender=req.session.user.Username;
+  
+  res.render('user/message',{reciver,sender})
+
+  
+});
 
 
 

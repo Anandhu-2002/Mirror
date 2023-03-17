@@ -32,25 +32,26 @@ function appendMessage(data,status){
     chats.appendChild(div);
     chats.scrollTop=chats.scrollHeight;
 }
-function appendchathistory(data,status){
-    let div=document.createElement('div');
-    div.classList.add('message',status);
-    let content='<p>'+data.msg.msg+'</p>';
-    div.innerHTML=content;
-    chats.appendChild(div);
-    chats.scrollTop=chats.scrollHeight;
+function MessageFetch(uname,user){
+    console.log(uname);
+    console.log(user);
+    let data={
+      uname:uname,
+      user:user
+    };
+    socket.emit('fetchmessage',data)
 }
+
 socket.on(msgget,(data)=>{
     appendMessage(data,'recived');
     
   
 })
 socket.on('chathistory',(data)=>{
-   
     if(data.msg.sender===reciverid && data.msg.reciver===senderid){
-        appendchathistory(data,'recived');
+        appendMessage(data.msg,'recived');
     }else if(data.msg.sender===senderid && data.msg.reciver===reciverid){
-        appendchathistory(data,'send');
+        appendMessage(data.msg,'send');
     }
     
 })

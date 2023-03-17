@@ -29,15 +29,20 @@
         </div>
     </div>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/client.js"></script>
     <script>
-    chat=document.querySelector('.chat')  
-    $("#msgb").ready(function () {
-       
-        $('.chat').empty()
+(function($) {
+    $('#msgbg').ready(function() {
+        
+       let reciver=document.getElementById('reciver').innerHTML 
+       let sender=document.getElementById('sender').innerHTML
+       console.log("sdfjhnfklhnn ")
+       MessageFetch(reciver,sender)
         
     });
+})(jQuery);
+    
     
     </script>
 </section>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/javascripts/client.js"></script>
