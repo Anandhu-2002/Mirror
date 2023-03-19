@@ -198,21 +198,26 @@ FollowUser:(user,follow)=>{
   return new Promise(async(resolve,reject)=>{
       let following=await db.get().collection(collections.Following_COLLECTION).findOne({user:user})
       if(following){
-        console.log(following);
-        db.get().collection(collections.Following_COLLECTION).updateOne({user:user},{
+        let presentfollowing=following.following
+        if(!presentfollowing.includes(follow)){
+          db.get().collection(collections.Following_COLLECTION).updateOne({user:user},{
                
-          $push:{"message":data}
+          $push:{following:follow}
       
         }).then(()=>{
-           resolve()
+           resolve({follow:true})
         })
+        }else{
+          resolve()
+        }
+        
       }else{
         let followingobj={
           user:user,
-          following:follow
+          following:[follow]
         }
         db.get().collection(collections.Following_COLLECTION).insertOne(followingobj).then(()=>{
-          resolve()
+          resolve({follow:true})
         })
       }
   })

@@ -33,8 +33,7 @@ function appendMessage(data,status){
     chats.scrollTop=chats.scrollHeight;
 }
 function MessageFetch(uname,user){
-    console.log(uname);
-    console.log(user);
+
     let data={
       uname:uname,
       user:user

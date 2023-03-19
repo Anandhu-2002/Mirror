@@ -23,62 +23,46 @@
 
 }
 
-.loginbody {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+
 
 .logincontainer {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 400px;
+  padding: 40px;
   transform: translate(-50%, -50%);
-  height: 60vh;
-  width: 30vw;
-  background-color: var(--carddark);
-  margin: auto;
-  padding: 10%;
-
-  /* box-shadow: 5px 10px 15px #000000; */
+  background: var(--carddark);
   box-shadow: 0px 15px 25px #000000;
 
 }
-
-
-
-.logininput {
+.logincontainer .user-box {
+  position: relative;
+}
+.logincontainer .user-box input{
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
   color: var(--inp);
-  font-size: 20px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid var(--inp);
+  outline: none;
   background: transparent;
-  border: none;
-  border-bottom: 2px solid var(--inp);
-  outline: none;
-  margin-top: 30px;
-  width: 320px;
-
-
-
+}
+.logincontainer .user-box label{
+   position: absolute;
+   top: -20px;
+   left: 0;
+   padding: 10px 0;
+   font-size:16px;
+   font-weight: 600;
+   color: var(--inp);
+   pointer-events: none;
+   transition: .5s;
 }
 
-.logininput::placeholder {
-  font-size: 20px;
-  font-weight: 0px;
-  color: var(--inp);
-}
 
-.logininput:focus::placeholder {
-  color: gray;
-}
-
-.logininput:focus {
-  border: none;
-  outline: none;
-  border-bottom: 3px solid var(--inpdark);
-
-
-}
 
 .btn-login {
   padding: 0.3rem 8.2rem;
@@ -87,58 +71,54 @@
   transform: translate(0%, -90%);
   font-size: 1rem;
   font-weight: 600;
-  border: 2px solid transparent;
+  border: 2px solid var(--inp);
   outline: none;
   cursor: pointer;
   text-transform: uppercase;
   transition: all .2s ease;
-  background-color: var(--inp);
-  color: var(--carddark);
+  background-color: var(--carddark);
+  color: var(--inp);
   margin-top: 4rem;
+  
 }
 
 .btn-login:hover {
-  background: transparent;
-  border-color: var(--inp);
-  color: var(--inp);
-}
 
-.btn-signup {
+  color: var(--carddark);
+  box-shadow: 0px 0px 20px 10px var(--inp);
+  background-color: var(--inp);
+}
+.links{
+  margin-top: 10px;
+ display: flex;
+ justify-content: space-between;
+
+
+}
+.links a {
 
   text-decoration: none;
-  padding: 0.3rem 1.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  border: 2px solid transparent;
-  border-radius: 28px;
   outline: none;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all .2s ease;
-  background-color: var(--inp);
-  color: var(--carddark);
-  margin-left: 32%;
-
-}
-
-.btn-signup:hover {
-  background: transparent;
-  border-color: var(--inp);
   color: var(--inp);
+  
+
 }
 
-.loginspan {
+
+
+
+.logincontainer span {
   color: var(--inp);
   font-weight: 600;
   margin-left: 45%;
 
 }
 
-.inv {
-  color: var(--inp);
-  font-weight: 100;
-  margin-left: 25px;
-}
+
 
 .logintheme-btn {
   position: absolute;
@@ -163,7 +143,30 @@
   fill: #000000;
 
 }
+.body.light .logincontainer .user-box label {
+  color: #000000;
 
+}
+.body.light .logincontainer .user-box input{
+  color: var(--carddark);
+  border-bottom: 1px solid var(--carddark);
+
+}
+.body.light .logincontainer span{
+  color: var(--bgdark);
+}
+.body.light .logincontainer a{
+  color: var(--bgdark);
+}
+.body.light .btn-login{
+  color: var(--bgdark);
+  background-color: var(--bglight);
+  border: none;
+}
+.body.light .btn-login:hover{
+
+  box-shadow: 0px 0px 20px 10px var(--bglight);
+}
 
 
 
@@ -317,13 +320,12 @@ div.message {
   color: var(--dark-gray);
   background-color: var(--white);
   padding: 5px 15px;
-  max-width: 300px;
   width: fit-content;
   width: auto;
-  min-width: min-content;
+  min-width: 100px;
   max-width: max-content;
   margin-bottom: 15px;
-  border-radius: 10px 50px 50px 10px;
+  border-radius: 50px 50px 50px 50px;
 
 }
 
@@ -335,7 +337,7 @@ div.send {
   margin-left: auto;
   color: var(--white);
   background-color: var(--light-blue);
-  border-radius: 50px 10px 10px 50px;
+  border-radius: 50px 50px 50px 50px;
   text-align: right;
 }
 
@@ -422,12 +424,7 @@ div.recived {
     height: 110%;
   }
 
-  .loginbody {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -40%);
-  }
+
 
   .logincontainer {
     top: 40%;
@@ -436,28 +433,22 @@ div.recived {
 
   }
 
+  .links a {
 
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
 
-  .logininput {
-
-    margin-top: 30px;
-    width: 255px;
+    
+  
   }
-
-
-
   .btn-login {
 
     padding: 0.3rem 6.2rem;
     margin-left: 3px;
 
-    transform: translate(0%, -90%);
+  
   }
-
-  .btn-signup {
-    margin-left: 28%;
-  }
-
   .msgmain {
 
     top: 0%;
@@ -473,9 +464,12 @@ div.recived {
   div.message {
     color: var(--dark-gray);
     background-color: var(--white);
-    padding: 0px 0px;
-    max-width: 0px;
-
+    padding: 5px 15px;
+   
+    width: fit-content;
+    width: auto;
+    min-width: 70px;
+    max-width: max-content;
     margin-bottom: 10px;
     border-radius: 50px 50px 50px 50px;
 
@@ -493,7 +487,7 @@ div.recived {
 
 @media screen and (min-width:450px) and (max-width:1200px) {
 
-  .logincontainer {
+  /* .logincontainer {
 
     height: 380px;
     width: 400px;
@@ -506,7 +500,7 @@ div.recived {
 
     margin-top: 30px;
     width: 320px;
-  }
+  } */
 
   .msgmain {
 
@@ -524,10 +518,12 @@ div.recived {
     color: var(--dark-gray);
     background-color: var(--white);
     padding: 3px 15px;
-    max-width: 150px;
+
+    width: fit-content;
+    min-width: 70px;
+    max-width: max-content;
     margin-bottom: 10px;
     border-radius: 50px 50px 50px 50px;
-
   }
 
   div.send {
@@ -653,4 +649,50 @@ div.recived {
 
 .theme-btn-sun {
   fill: #ddd8d8;
+}
+
+/*************************************************/
+
+/***********************admin********************/
+
+
+.admin-container{
+  background-color: rgb(5, 0, 5);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
+  display: flex;
+  justify-content: center; 
+ 
+}
+.admin-main{
+
+  margin-top: 120px;
+  height: 70vh;
+  display: grid;
+
+}
+.admin-main a{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font: 3em sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  width: 350px;
+  height: 100px;
+  border-radius:20px ;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0px 0px 20px -4px #ffffff;
+  
+}
+.admin-main a:hover
+ {
+  color: rgb(5, 5, 5);
+  box-shadow: 0px 0px 20px 10px #ffffff;
+  background-color: #ffffff;
+  
 }

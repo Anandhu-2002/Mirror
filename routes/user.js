@@ -4,6 +4,7 @@ var router = express.Router();
 var userHelpers = require('../helpers/user-helpers');
 var fs=require('fs');
 const fileUpload = require('express-fileupload');
+const { response } = require('express');
 // const http=require('http');
 // var socketio=require('socket.io');
 // var app=require('../app')
@@ -42,6 +43,9 @@ router.post('/login', (req, res) => {
     }
   })
 });
+router.get('/resetpassword',(req,res)=>{
+  res.render('user/resetpassword')
+})
 router.get('/home', verifyLogin, async(req, res) => {
   let user = req.session.user
   userHelpers.viewPhotos().then((photos)=>{
@@ -169,7 +173,10 @@ router.get('/viewuserprofile/:id',async(req,res)=>{
 router.get('/follow/:id',async(req,res)=>{
   let follow=req.params.id
   let user=req.session.user.Username
-  userHelpers.FollowUser(user,follow)
+  userHelpers.FollowUser(user,follow).then((response)=>{
+    console.log(response);
+    res.redirect('back')
+  })
 
 });
 router.get('/message/:uid',async(req,res)=>{

@@ -16,19 +16,30 @@
 
     <div class="logincontainer">
 
-      <div class="loginbody">
+   
         <form action="/login" method="POST">
           {{#if eror}}
           <p class="error text">Invalid username or password</p>
           {{/if}}
-          <input type="email" placeholder="Email" name="Email" class="logininput"><br>
-          <input type="password" placeholder="Password" name="Password" class="logininput"><br>
+          <div class="user-box">
+            <input type="email"  name="Email" class="logininput">
+            <label>Username</label>
+          </div>
+          <div class="user-box">
+            <input type="password" name="Password" class="logininput">
+            <label>Password</label>
+          </div>
+          
+          
 
           <button type="submit" class="btn-login">Login</button>
-          <span class="loginspan">OR</span><br>
-          <a href="/signup" class="btn-signup ">signup</a>
+          <span>OR</span><br>
+          <div class="links">
+          <a href="/resetpassword" class="forgot">forgot password?</a>
+          <a href="/signup" class="signup">signup?</a>
+          </div>
         </form>
-      </div>
+
 
     </div>
   </div>

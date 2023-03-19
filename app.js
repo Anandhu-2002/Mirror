@@ -46,7 +46,7 @@ io.on('connection',(socket)=>{
       userHelpers.Message(data,senderid)
   })
   socket.on('fetchmessage',async(data)=>{
-    console.log(data);
+   
     reciverid=data.uname
     senderid=data.user
     let msg=await userHelpers.Messagehistory(senderid,reciverid)
