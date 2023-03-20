@@ -197,6 +197,24 @@ FollowUser:(user,follow)=>{
 
   return new Promise(async(resolve,reject)=>{
       let following=await db.get().collection(collections.Following_COLLECTION).findOne({user:user})
+      let followers=await db.get().collection(collections.Followers_COLLECTION).findOne({user:follow})
+      if(followers){
+        let presentfollowers=followers.followers
+        if(!presentfollowers.includes(user)){
+          await db.get().collection(collections.Followers_COLLECTION).updateOne({user:follow},{
+               
+          $push:{followers:user}
+      
+        })
+        }
+        
+      }else{
+        let followersobj={
+          user:follow,
+          followers:[user]
+        }
+         await db.get().collection(collections.Followers_COLLECTION).insertOne(followersobj)
+      }
       if(following){
         let presentfollowing=following.following
         if(!presentfollowing.includes(follow)){
@@ -219,6 +237,62 @@ FollowUser:(user,follow)=>{
         db.get().collection(collections.Following_COLLECTION).insertOne(followingobj).then(()=>{
           resolve({follow:true})
         })
+      }
+  })
+},
+unFollowUser:(user,unfollow)=>{
+
+  return new Promise(async(resolve,reject)=>{
+      let following=await db.get().collection(collections.Following_COLLECTION).findOne({user:user})
+      let followers=await db.get().collection(collections.Followers_COLLECTION).findOne({user:unfollow})
+     
+        let presentfollowers=followers.followers
+        let presentfollowing=following.following
+        if(presentfollowers.includes(user)){
+          await db.get().collection(collections.Followers_COLLECTION).updateOne({user:unfollow},{
+               
+          $pull:{followers:user}
+      
+        })
+        }else{
+          resolve()
+        }
+      
+       
+        if(presentfollowing.includes(unfollow)){
+          db.get().collection(collections.Following_COLLECTION).updateOne({user:user},{
+               
+          $pull:{following:unfollow}
+      
+        }).then(()=>{
+           resolve({unfollow:true})
+        })
+        }else{
+          resolve()
+        }  
+  })
+},
+Followers:(username)=>{
+
+  return new Promise(async(resolve,reject)=>{
+    let followers=await db.get().collection(collections.Followers_COLLECTION).findOne({user:username})
+      if(followers){
+        resolve(followers.followers)
+      }
+      else{
+        resolve([])
+      }
+  })
+},
+Following:(username)=>{
+
+  return new Promise(async(resolve,reject)=>{
+    let following=await db.get().collection(collections.Following_COLLECTION).findOne({user:username})
+      if(following){
+        resolve(following.following)
+      }
+      else{
+        resolve([])
       }
   })
 }

@@ -67,7 +67,6 @@ router.post('/signup', (req, res) => {
 
 router.post('/verify-otp', async (req, res) => {
   userHelpers.VerifyOtp(req.body.mailid).then((response) => {
-    console.log(response.otp);
     res.json(response);
   })
 });
@@ -148,13 +147,37 @@ router.post('/search',async(req, res) => {
     res.json(response.user)
 })
 });
+router.post('/follow',async(req,res)=>{
+  let follow=req.body.uname
+  let user=req.session.user.Username
+  userHelpers.FollowUser(user,follow).then((response)=>{
+  
+    res.json(response)
+  })
+
+});
+router.post('/unfollow',async(req,res)=>{
+  let unfollow=req.body.uname
+  let user=req.session.user.Username
+  userHelpers.unFollowUser(user,unfollow).then((response)=>{
+  
+    res.json(response)
+
+  })
+
+});
 router.get('/profile',verifyLogin,async(req,res)=>{
   
   user=req.session.user
-  userHelpers.profile(req.session.user.Username).then((photos)=>{
-    photos.reverse()
-    res.render('user/profile',{user,photos})
-  })
+  let photos=await userHelpers.profile(user.Username)
+  let followers=await userHelpers.Followers(user.Username)
+  let following=await userHelpers.Following(user.Username)
+  photos.reverse()
+  let photocount=photos.length
+  let followerscount=followers.length
+  let followingcount=following.length
+  res.render('user/profile',{user,photos,photocount,followerscount,followingcount})
+
   
 
 })
@@ -164,21 +187,20 @@ router.get('/viewuserprofile/:id',async(req,res)=>{
   let userid=req.params.id
   let User=await userHelpers.userSearch(userid)
   let user=User.user[0]
-  userHelpers.profile(userid).then((photos)=>{
-
-    photos.reverse()
-    res.render('user/publicprofile',{user,photos})
-  })
+  let photos=await userHelpers.profile(userid)
+  let followers=await userHelpers.Followers(userid)
+  let following=await userHelpers.Following(userid)
+  let followed=false
+  if(followers.includes(req.session.user.Username)){
+      followed=true
+  }
+  photos.reverse()
+  let photocount=photos.length
+  let followerscount=followers.length
+  let followingcount=following.length
+  res.render('user/publicprofile',{user,photos,photocount,followerscount,followingcount,followed})
 });
-router.get('/follow/:id',async(req,res)=>{
-  let follow=req.params.id
-  let user=req.session.user.Username
-  userHelpers.FollowUser(user,follow).then((response)=>{
-    console.log(response);
-    res.redirect('back')
-  })
 
-});
 router.get('/message/:uid',async(req,res)=>{
   var reciver=req.params.uid;
   var sender=req.session.user.Username;

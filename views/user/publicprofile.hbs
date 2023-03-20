@@ -12,29 +12,41 @@
                 style="z-index: 1;">
                 Message
               </a>
-              <a href="/follow/{{user.Username}}" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
-                style="z-index: 1;">
-                Follow
-              </a>
+              <button class="btn btn-outline-dark followbutton" data-mdb-ripple-color="dark" id="bt"
+                 
+                {{#if followed}}
+                    
+                  style="z-index: 1;background-color:#000205;color:#ffffff;"
+                  onclick="unfollow()" >
+                 <span id="followstatus">Followed</span>
+                 {{else}}
+                  style="z-index: 1;" onclick="follow()">
+                 <span id="followstatus">Follow</span>
+
+                 {{/if}}
+              
+                
+              </button>
+
 
             </div>
             <div class="ms-3" style="margin-top: 130px;">
               <h5>{{user.FirstName}} {{user.LastName}}</h5>
-              <p>{{user.Username}}</p>
+              <p><span id="uname">{{user.Username}}</span></p>
             </div>
           </div>
           <div class="p-4 text-black" style="background-color: #f8f9fa;">
             <div class="d-flex justify-content-end text-center py-1">
               <div>
-                <p class="mb-1 h5">253</p>
+                <p class="mb-1 h5">{{photocount}}</p>
                 <p class="small text-muted mb-0">Photos</p>
               </div>
               <div class="px-3">
-                <p class="mb-1 h5">1026</p>
+                <p class="mb-1 h5" id="followerscount">{{followerscount}}</p>
                 <p class="small text-muted mb-0">Followers</p>
               </div>
               <div>
-                <p class="mb-1 h5">478</p>
+                <p class="mb-1 h5">{{followingcount}}</p>
                 <p class="small text-muted mb-0">Following</p>
               </div>
             </div>
@@ -61,4 +73,53 @@
       </div>
     </div>
   </div>
+  <script>
+    function follow(){
+      let username=document.getElementById('uname').innerHTML
+              
+       $.ajax({
+      url: '/follow',
+      data: {
+        uname: username
+      },
+      method: 'post',
+      success: (response) => {
+        
+        if (response.follow) {
+          $('.followbutton').css('background-color','#000205')
+          $('.followbutton').css('color','#ffffff')
+          document.getElementById('followstatus').innerHTML='Followed'
+          let count=parseInt(document.getElementById('followerscount').innerHTML)
+          document.getElementById('followerscount').innerHTML=count+1
+          $('#bt').attr("onclick","unfollow()")
+
+        }
+      }
+
+    })
+ }
+     function unfollow(){
+       let username=document.getElementById('uname').innerHTML       
+       $.ajax({
+      url: '/unfollow',
+      data: {
+        uname: username
+      },
+      method: 'post',
+      success: (response) => {
+        
+        if (response.unfollow) {
+          $('.followbutton').css('background-color','#ffffff')
+          $('.followbutton').css('color','#000205')
+          document.getElementById('followstatus').innerHTML='Follow'
+          let count=parseInt(document.getElementById('followerscount').innerHTML)
+          document.getElementById('followerscount').innerHTML=count-1
+          $('#bt').attr("onclick","follow()")
+
+        }
+      }
+
+    })
+     }
+  </script>
 </section>
