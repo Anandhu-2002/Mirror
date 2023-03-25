@@ -105,7 +105,7 @@ module.exports={
     return new Promise(async(resolve,reject)=>{
        let users=await db.get().collection(collections.USER_COLLECTION).find().toArray()
 
-      
+       
         resolve(users)
         
       
@@ -114,7 +114,8 @@ module.exports={
   },  
   uploadPhotos:(photoDetails,username)=>{
     let photoObj={
-      Description:photoDetails.Description,
+      Title:photoDetails.title,
+      Description:photoDetails.description,
       username:username
     }
     return new Promise(async(resolve,reject)=>{
@@ -125,6 +126,13 @@ module.exports={
       })
     })
 
+  },
+  findPhoto:(photoid)=>{
+    return new Promise(async(resolve,reject)=>{
+      let photos=await db.get().collection(collections.PHOTOS_COLLECTION).findOne({_id:objectId(photoid)})
+      resolve(photos);
+      
+    })
   },
   viewPhotos:()=>{
     return new Promise(async(resolve,reject)=>{

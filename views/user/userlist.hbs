@@ -1,19 +1,20 @@
 <section>
-  <span  id="uname" hidden>{{uname}}</span>
+  <div class="userlist">
     {{#each users}}
 
 <div class="userouterdiv">
-  <div class="userprofilediv">
+  
     <div class="usernamediv">
         <span><a class="no-link"  href="/message/{{this.Username}}">{{this.Username}}</a></span>
         
         <span  id="user" hidden>{{this.Username}}</span>
      </div>
-  </div>
+  
   
 </div>
 
 {{/each}}
+</div>
 <script src="/socket.io/socket.io.js"></script>
 
 

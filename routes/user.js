@@ -18,6 +18,16 @@ const verifyLogin = (req, res, next) => {
   }
 }
 
+function removeObjectWithId(photos, userid) {
+  for (let i = 0; i < photos.length; i++) {
+    if (photos[i].username===userid) {
+      photos.splice(i, 1);
+      i--;
+    }
+  }
+  
+  return photos;
+}
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -43,17 +53,6 @@ router.post('/login', (req, res) => {
     }
   })
 });
-router.get('/resetpassword',(req,res)=>{
-  res.render('user/resetpassword')
-})
-router.get('/home', verifyLogin, async(req, res) => {
-  let user = req.session.user
-  userHelpers.viewPhotos().then((photos)=>{
-    photos.reverse()    
-    res.render('user/home', { user, photos})
-  })
-  
-})
 router.get('/signup', (req, res) => {
   res.render('user/signup')
 });
@@ -90,6 +89,30 @@ router.post('/userSearch', (req, res) => {
 
   })
 });
+router.get('/resetpassword',(req,res)=>{
+  res.render('user/resetpassword')
+})
+router.get('/home', verifyLogin, async(req, res) => {
+  let user = req.session.user
+  userHelpers.viewPhotos().then((allphotos)=>{
+    allphotos.reverse()
+    let photos=removeObjectWithId(allphotos,user.Username)   
+    res.render('user/home', { user, photos})
+  })
+  
+});
+router.get('/photoDetails/:id',async (req,res)=>{
+  //  let id=req.params.id
+  //  let photos=await userHelpers.findPhoto(id)
+   res.render('user/commingsoon')
+
+});
+router.get('/addToFav',async (req,res)=>{
+
+   res.render('user/commingsoon')
+
+});
+
 router.get('/uploadPhoto', verifyLogin, (req, res) => {
 
   res.render('user/photoUpload')
@@ -128,9 +151,13 @@ router.get('/removePhoto/:id',async(req,res)=>{
   })
 });
 router.get('/userlist',async(req,res)=>{
+  let userid=req.session.user.Username
   let users=await userHelpers.findalluser()
-  res.render('user/userlist',{users,uname:req.session.user.Username});
+  const objWithIdIndex = users.findIndex((obj) => obj.Username === userid);
+  users.splice(objWithIdIndex, 1);
+  res.render('user/userlist',{users});
 })
+
 router.get('/search',verifyLogin,(req,res)=>{
   res.render('user/search')
 
@@ -180,7 +207,14 @@ router.get('/profile',verifyLogin,async(req,res)=>{
 
   
 
-})
+});
+router.get('/userverification/:id',async(req,res)=>{
+  
+ res.render('user/commingsoon')
+
+  
+
+});
 
 router.get('/viewuserprofile/:id',async(req,res)=>{
   

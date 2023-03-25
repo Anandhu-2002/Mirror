@@ -1,43 +1,21 @@
-<section class="h-100 bg">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-lg-9 col-xl-7">
-        <div class="card mt-3">
-         
-        {{#each photos}}
-          <div class="card-body p-4 text-black">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="lead fw-normal mb-0"><a class="no-link" href="/viewuserprofile/{{this.username}}">{{this.username}}</a></p>
-                
-              </div>
-            
-            <div class="row g-2">
-              <div class="col mb-2">
-                <img src="/photos/{{this._id}}.jpg"
-                  alt="image 1" class="w-100 rounded-3">
-              </div>
-          
-            </div>
-            <div class="mt-2">
-                <p class="lead fw-normal mb-1">About</p>
-                <div class="p-4" style="background-color: #f8f9fa;">
-                  <p class="font-italic mb-1">{{this.Description}}</p>
-                </div>
-              </div>
-          </div>
-          {{/each}}
-
-        </div>
+<section>
+  <div class="home">
+    {{#each photos}}
+    <div class="homecard">
+      <div class="inner-card">
+        <div class="image-card"><img src="/photos/{{this._id}}.jpg" class="image"> </div>
+        <h1> <a class="no-link" href="/viewuserprofile/{{this.username}}">{{this.username}}</a></h1>
+        <p>{{this.Title}}</p>
+      </div>
+      <div class="homebutton-wrapper">
+        <a href="/photoDetails/{{this._id}}" class="btnhome outlinehome">DETAILS</a>
+        <a href="/addToFav" class="btnhome fillhome">FAVORITE</a>
       </div>
     </div>
+    {{/each}}
+
+
   </div>
+
+
 </section>
-<script>
-  function Like(id){
-    let like= parseInt(document.getElementById(id).innerHTML)
-    
-    like=like+1
-    console.log(like)
-    document.getElementById(id).innerHTML=like
-  }
-</script>
