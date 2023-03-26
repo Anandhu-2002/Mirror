@@ -64,7 +64,7 @@
 
                   <div class="form-outline">
                     <label class="form-label" for="emailAddress">Email</label>
-                    <input type="email" id="mailid" name="Emailid" class="form-control form-control-lg" required />
+                    <input type="email" id="mailid" name="Emailid" class="form-control form-control-lg" oninput="mailidSearch()" required />
 
                   </div>
 
@@ -124,7 +124,7 @@
   var genotp;
   function otpVerification() {
 
-    mailid = document.getElementById('mailid').value
+    let mailid = document.getElementById('mailid').value
 
     $.ajax({
       url: '/verify-otp',
@@ -152,5 +152,43 @@
     } else {
       $('#butt').attr('disabled', 'disabled');
     }
+  }
+  function mailidSearch(){
+    let mailid = document.getElementById('mailid').value
+    $.ajax({
+      url:'/mailidSearch',
+      data:{
+        mailid:mailid
+        },
+      method:'post',
+      success:(res)=>{
+        if(mailid.trim()!=""){
+        if(res.found ){
+           $('#mailid').css('border', function(){
+        
+            return ' solid #f00';
+        
+        }).change()
+        }
+        else{
+         $('#mailid').css('border', function(){
+        
+            return 'solid #b2d3eb';
+        
+        }).change()
+        }
+
+        }else{
+          $('#mailid').css('border', function(){
+        
+            return 'solid #b2d3eb';
+        
+        }).change()
+        }
+        
+
+        
+      }
+    })
   }
 </script>

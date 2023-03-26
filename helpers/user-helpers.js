@@ -101,6 +101,20 @@ module.exports={
 
     })
   },
+  mailidSearch:(mailid)=>{
+    return new Promise(async(resolve,reject)=>{
+       let user=await db.get().collection(collections.USER_COLLECTION).find({Emailid : {$regex: mailid }}).toArray()
+
+      if(user.length!=0){
+        resolve({found:true})
+      }
+      else{
+        resolve({found:false})
+        
+      }
+
+    })
+  },
   findalluser:()=>{
     return new Promise(async(resolve,reject)=>{
        let users=await db.get().collection(collections.USER_COLLECTION).find().toArray()

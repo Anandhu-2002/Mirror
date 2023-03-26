@@ -93,8 +93,8 @@
         },
       method:'post',
       success:(res)=>{
-        
-        if(res.found ){
+       if(uname.trim()!=""){
+          if(res.found ){
            $('#uname').css('border', function(){
         
             return ' solid #f00';
@@ -108,6 +108,14 @@
         
         }).change()
         }
+       }else{
+         $('#uname').css('border', function(){
+        
+            return 'solid #b2d3eb';
+        
+        }).change()
+        } 
+        
         
       }
     })

@@ -167,7 +167,13 @@ router.post('/userSearch', (req, res) => {
    
     res.json(response)
 })
+});
+router.post('/mailidSearch', (req, res) => {
+  userHelpers.mailidSearch(req.body.mailid).then((response) => {
+   console.log(response);
+    res.json(response)
 })
+});
 router.post('/search',async(req, res) => {
   userHelpers.userSearch(req.body.uname).then((response) => {
   
