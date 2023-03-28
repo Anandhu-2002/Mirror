@@ -1,0 +1,23 @@
+<section>
+    <div class="imgdet-main">
+        <div class="imgdet-container">
+            <div class="imgdet-card">
+                <img src="/photos/{{photos._id}}.jpg" class="imgdet-img"> 
+                
+            </div>
+            <a href="/removephoto/{{photos._id}}" class="del-btn">DELETE</a>
+            <form action="/editphoto/{{photos._id}}" method="POST">
+                    <br>
+                    <span class="text">Title</span>
+                    <input type="text" name="Title" class="form-control" value="{{photos.Title}}"><br>
+                                       
+                    <span class="text">Description</span>
+                    <input type="text" name="Description" class="form-control" value="{{photos.Description}}">
+                    
+                    <button class="edit-btn">SAVE CHANGES</button>
+            </form>
+            
+        </div>
+
+    </div>
+</section>

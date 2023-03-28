@@ -263,7 +263,8 @@ img {
 }
 .inner-card{
   width: 100%;
-  height: 90%;
+  height: 85%;
+
  
 }
 .image-card{
@@ -272,7 +273,7 @@ img {
   background-size: cover;
   height: 300px;
   width: 100%;
- 
+
  
 }
 .image{
@@ -303,32 +304,76 @@ img {
   background: transparent;
   color: rgba(0, 212, 255, 0.9);
   border: 1px solid rgba(0, 212, 255, 0.6);
-  transition: all .3s ease;
+
   
 }
 
-.outlinehome:hover{
+/* .outlinehome:hover{
   transform: scale(1.125);
   color: rgba(255, 255, 255, 0.9);
   border-color: rgba(255, 255, 255, 0.9);
   transition: all .3s ease;  
-}
+} */
 
 .fillhome {
   background: rgba(0, 212, 255, 0.9);
   color: rgba(255,255,255,0.95);
   filter: drop-shadow(0);
   font-weight: bold;
-  transition: all .3s ease; 
+
 }
 
-.fillhome:hover{
+/* .fillhome:hover{
   transform: scale(1.125);  
   border-color: rgba(255, 255, 255, 0.9);
   filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
   transition: all .3s ease;    
+} */
+/****************Image details******************************************/
+.imgdet-main{
+  display: flex;
+  justify-content: center;
 }
+.imgdet-container{
+  margin-top: 20px;
+  height: 80vh;
+  width: 350px;
+  color: #fff;
+  backdrop-filter: blur(5px);
+  padding: 10px;
+}
+.imgdet-container p{
+  font-size: large;
 
+  
+}
+.imgdet-card{
+  margin-top: 10px;
+  height: 250px;
+  width: 100%;
+}
+.imgdet-img{
+  width: 100%;
+  height: 100%;
+
+}
+.imgdet-container .edit-btn{
+   background-color: #00b7ff;
+   border: none;
+   border-radius: 12px;
+   padding: 10px 20px;
+   margin-top: 15px;
+   margin-left: 25%;
+
+}
+.imgdet-container .del-btn{
+  text-decoration: none;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: red;
+  color: rgba(255,255,255,0.95);
+
+}
 /* Chat */
 /* font-family: 'Poppins', sans-serif; */
 :root {
@@ -561,9 +606,22 @@ div.recived {
     text-align: right;
   }
   .homecard{
-    height:70vh; 
+    height:75vh; 
 
   }
+  .imgdet-container{
+    height: 90vh;
+    width: 90vw;
+    
+
+}
+
+.imgdet-card{
+    margin-top: 10px;
+    background-color: aqua;
+    height: 250px;
+    width: 100%;
+}
 
 }
 

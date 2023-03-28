@@ -130,7 +130,8 @@ module.exports={
     let photoObj={
       Title:photoDetails.title,
       Description:photoDetails.description,
-      username:username
+      username:username,
+      Like:0
     }
     return new Promise(async(resolve,reject)=>{
       await db.get().collection(collections.PHOTOS_COLLECTION).insertOne(photoObj).then((data)=>{
@@ -144,6 +145,7 @@ module.exports={
   findPhoto:(photoid)=>{
     return new Promise(async(resolve,reject)=>{
       let photos=await db.get().collection(collections.PHOTOS_COLLECTION).findOne({_id:objectId(photoid)})
+      console.log(photos);
       resolve(photos);
       
     })
@@ -160,6 +162,19 @@ module.exports={
       resolve(photos)
     })
   },
+  updatephoto:(photoid,photodetails)=>{
+    return new Promise((resolve,reject)=>{
+        db.get().collection(collections.PHOTOS_COLLECTION).updateOne({ _id:objectId(photoid)},{
+            $set:{
+                Title:photodetails.Title,
+                Description:photodetails.Description
+            }
+        }).then((response)=>{
+            resolve()
+        })
+    })
+    
+},
   removePhoto:(photoid)=>{
     return new Promise(async(resolve,reject)=>{
       db.get().collection(collections.PHOTOS_COLLECTION).deleteOne({_id:objectId(photoid)}).then(()=>{
@@ -168,13 +183,11 @@ module.exports={
       
     })
   },
+
   Message:(data,username)=>{
    
     var sender=username;
     var reciver=data.reciver;     
-    let msg={        
-        [sender]:data.msg        
-    }
     let users=[sender,reciver]
     let usersrev=[reciver,sender]
     return new Promise(async(resolve,reject)=>{

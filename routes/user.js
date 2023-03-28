@@ -102,14 +102,9 @@ router.get('/home', verifyLogin, async(req, res) => {
   
 });
 router.get('/photoDetails/:id',async (req,res)=>{
-  //  let id=req.params.id
-  //  let photos=await userHelpers.findPhoto(id)
-   res.render('user/commingsoon')
-
-});
-router.get('/addToFav',async (req,res)=>{
-
-   res.render('user/commingsoon')
+   let id=req.params.id
+   let photos=await userHelpers.findPhoto(id)
+   res.render('user/imgdetails',{photos})
 
 });
 
@@ -132,10 +127,18 @@ router.post('/photos', async (req, res) => {
 
   })
 });
-router.get('/editphoto/:id',(req,res)=>{
-  res.render('user/editphoto',{photo:req.params.id})
+router.get('/editphoto/:id',async(req,res)=>{
+  let id=req.params.id
+  let photos=await userHelpers.findPhoto(id)
+  res.render('user/editimage',{photos})
 });
-router.get('/removePhoto/:id',async(req,res)=>{
+router.post('/editphoto/:id',async(req,res)=>{
+  let id=req.params.id
+  userHelpers.updatephoto(id,req.body).then(()=>{
+     res.redirect('/profile')   
+  })
+});
+router.get('/removephoto/:id',async(req,res)=>{
   let photoId=req.params.id
   await userHelpers.removePhoto(photoId)
   let imgpath='./public/photos/' + photoId + '.jpg'
