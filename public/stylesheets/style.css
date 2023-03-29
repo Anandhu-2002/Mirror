@@ -1,14 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 /***********login*********************/
-body{
+
+
+.uploadbg{
+  color: white;
+  background-color: #000000;
+
+
+}
+html{
+  background-color: #000000;
+}
+.profilebg{
   background: url('/bgimg/bg2.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.uploadbg{
-  color: #00b7ff;
 }
 :root {
   --light-blue: #41aae7;
@@ -215,7 +223,13 @@ img {
 }
 /**********home*******************************/
 
-
+.homebg{
+  background: url('/bgimg/bg2.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .home{
 
   display: grid;
@@ -539,7 +553,44 @@ div.recived {
   background-color: #b6babd;
 
 }
-
+/************************userlist************************************/
+.userlist-main{
+  display: flex;
+  justify-content: center;
+  background-color:#000000;
+  margin-top: 0%;
+}
+.userlist-container{
+  height: 99vh;
+  width: 30vw;
+  top: 0%;
+  bottom: 0%;
+  background-color: #000000;
+}
+.userlist-heading{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items:center ;
+  background-color:#E50914;
+}
+.userlist-heading h2{
+margin-left:30px ;
+}
+.userlist-username{
+  width: 100%;
+  height:8vh;
+  border-bottom: solid 0.0001px #201f1f;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+}
+.userlist-username p{
+  font-size: 20px;
+  margin-left: 30px;
+}
+/*************************************************/
 @media screen and (max-width:450px) {
   .loginmain {
 
@@ -622,6 +673,12 @@ div.recived {
     height: 250px;
     width: 100%;
 }
+.userlist-container{
+  height: 90vh;
+  width: 90vw;
+  
+
+}
 
 }
 
@@ -659,7 +716,12 @@ div.recived {
     border-radius: 50px 50px 50px 50px;
     text-align: right;
   }
+  .userlist-container{
+    height: 90vh;
+    width: 90vw;
+    
 
+}
 
 }
 

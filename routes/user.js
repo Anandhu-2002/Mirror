@@ -90,7 +90,7 @@ router.post('/userSearch', (req, res) => {
   })
 });
 router.get('/resetpassword',(req,res)=>{
-  res.render('user/resetpassword')
+  res.render('user/commingsoon')
 })
 router.get('/home', verifyLogin, async(req, res) => {
   let user = req.session.user
@@ -158,7 +158,8 @@ router.get('/userlist',async(req,res)=>{
   let users=await userHelpers.findalluser()
   const objWithIdIndex = users.findIndex((obj) => obj.Username === userid);
   users.splice(objWithIdIndex, 1);
-  res.render('user/userlist',{users});
+  console.log(users);
+  res.render('user/userlist',{users,heading:'Message'});
 })
 
 router.get('/search',verifyLogin,(req,res)=>{
@@ -200,6 +201,16 @@ router.post('/unfollow',async(req,res)=>{
     res.json(response)
 
   })
+
+});
+router.get('/followers/:uid',async(req,res)=>{
+  let users=await userHelpers.Followers(req.params.uid)
+  res.render('user/followers&following',{users,heading:'Followers'});
+
+});
+router.get('/following/:uid',async(req,res)=>{
+  let users=await userHelpers.Following(req.params.uid)
+  res.render('user/followers&following',{users,heading:'Following'});
 
 });
 router.get('/profile',verifyLogin,async(req,res)=>{
