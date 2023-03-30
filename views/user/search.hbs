@@ -1,6 +1,21 @@
 <section>
+<div class="userlist-main">
+        <div class="userlist-container">
+            <div class="userlist-heading">
+                 <input type="text" id="uname" class="searchTerm" placeholder="Enter Username" oninput="search()">
+            </div>
+            
+              <div class="username">
+                       
+              </div>
 
-    <div class="input-group">
+      
+            
+            
+        </div>
+
+    </div>
+    {{!-- <div class="input-group">
   
     <input type="text" id="uname" class="form-control rounded"  placeholder="Search" oninput="search()"/>
     
@@ -9,14 +24,14 @@
     <div class="usermaindiv">
 
 
-    </div>
+    </div> --}}
 
 </section>
 <script>
   function search(){
 
      var uname=document.getElementById('uname').value;
-     var outerdiv=document.querySelector('.usermaindiv');
+     var outerdiv=document.querySelector('.username');
      outerdiv.innerHTML="";
      if(uname!=""){
      $.ajax({
@@ -32,7 +47,7 @@
        
         for(i=0;i<res.length;i++){
               div.classList.add('userouterdiv');
-              content='<div class="usernamediv"><a class="no-link" href="/viewuserprofile/'+res[i].Username+'">'+res[i].Username+'</a></div></div>';
+              content='<div class="userlist-username"><a class="no-link" href="/viewuserprofile/'+res[i].Username+'">'+res[i].Username+'</a></div></div>';
               div.innerHTML=content;
               outerdiv.appendChild(div);
         }
