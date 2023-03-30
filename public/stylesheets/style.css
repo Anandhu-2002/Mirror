@@ -18,6 +18,14 @@ html{
   background-repeat: no-repeat;
   background-size: cover;
 }
+.imgdetbg{
+  background: url('/bgimg/bg2.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
 :root {
   --light-blue: #41aae7;
   --inp: #09c1ce;
@@ -337,6 +345,7 @@ html{
 .imgdet-main{
   display: flex;
   justify-content: center;
+
 }
 .imgdet-container{
   margin-top: 20px;

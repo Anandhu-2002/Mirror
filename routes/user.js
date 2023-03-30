@@ -5,10 +5,6 @@ var userHelpers = require('../helpers/user-helpers');
 var fs=require('fs');
 const fileUpload = require('express-fileupload');
 const { response } = require('express');
-// const http=require('http');
-// var socketio=require('socket.io');
-// var app=require('../app')
-// io=app.io
 
 const verifyLogin = (req, res, next) => {
   if (req.session.userLoggedIn) {

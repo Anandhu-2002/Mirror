@@ -145,7 +145,6 @@ module.exports={
   findPhoto:(photoid)=>{
     return new Promise(async(resolve,reject)=>{
       let photos=await db.get().collection(collections.PHOTOS_COLLECTION).findOne({_id:objectId(photoid)})
-      console.log(photos);
       resolve(photos);
       
     })
