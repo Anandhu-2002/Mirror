@@ -1,0 +1,54 @@
+<section>
+    <form enctype="multipart/form-data" action="/userverification/{{this.uid}}" method="post">
+    <div class="userverifi-main">
+        <div class="userverifi-container">
+          
+                <div class="userverifi-card">
+                    <div class="userverifi-inp">
+                        <label>Company Name</label>
+                        <input class="input" type="text" name="compname" required>
+                    </div>
+                    <div class="userverifi-inp">
+                        <label>Company address</label>
+                        <input class="input"  type="text" name="compaddr" required>
+                    </div>
+
+                    
+
+                </div>
+                <div class="userverifi-card">
+                    <div class="form">
+                        <span class="form-title">Upload Your Licence</span>
+                        <p class="form-paragraph">
+                           Front side
+                          </p>
+                         <label for="file-input" class="drop-container">
+                        
+                        
+                        <input type="file" accept="image/*" name="licenceimg" required="" id="file-input" multiple>
+                        </label>
+                      </div>
+                      <div class="form">
+                        <span class="form-title">Upload Your Aadhar</span>
+                        <p class="form-paragraph">
+                            Frontside
+                          </p>
+                         <label for="file-input" class="drop-container">
+                        
+                        
+                        <input type="file" accept="image/*" name="aadharimg" required="" id="file-input" multiple>
+                        </label>
+                      </div>
+                </div>
+                <div class="userverifi-button">
+                    <button type="submit">
+                        Submit
+                    </button>
+                </div>
+                
+            
+        </div>
+            
+    </div>
+</form>
+</section>

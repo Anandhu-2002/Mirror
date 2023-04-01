@@ -1,8 +1,8 @@
-var db=require('../dbconnection/connection');
-var collections=require('../dbconnection/collections');
+const db=require('../dbconnection/connection');
+const collections=require('../dbconnection/collections');
 const bcrypt=require('bcrypt')
-var otpgenerator=require('otp-generator');
-var nodemailer=require('nodemailer');
+const otpgenerator=require('otp-generator');
+const nodemailer=require('nodemailer');
 const objectId=require('mongodb').ObjectId
 
 module.exports={
@@ -126,6 +126,21 @@ module.exports={
 
     })
   },  
+userVerification:(Details,uid)=>{
+    let detailsObj={
+      Username:uid,
+      CompanyName:Details.compname,
+      CompanyAddress:Details.compaddr,
+    }
+    return new Promise(async(resolve,reject)=>{
+      await db.get().collection(collections.Verification_COLLECTION).insertOne(detailsObj).then((data)=>{
+        resolve(data.insertedId)
+
+
+      })
+    })
+
+  },
   uploadPhotos:(photoDetails,username)=>{
     let photoObj={
       Title:photoDetails.title,

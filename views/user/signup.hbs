@@ -1,4 +1,65 @@
-<section class="vh-100 gradient-custom">
+<section >
+  <div class="signupbg">
+
+
+      <!-- Slider main container -->
+    <div class="signup-card">
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            
+            <h2>Welcome</h2>
+            <h3>Let's create your username</h3>
+            <input
+              spellcheck="false"
+              oninput="checkValid(event)"
+              type="text"
+              placeholder="e.g. johnsmith"
+            />
+            <button disabled type="button" onclick="gotoSlide(1)">Next</button>
+          </div>
+          <div class="swiper-slide">
+            
+            <h2>Security</h2>
+            <h3>Enter a strong password</h3>
+            <input
+              oninput="checkValid(event)"
+              type="password"
+              placeholder="Your password"
+            />
+            <button disabled type="button" onclick="gotoSlide(2)">Next</button>
+          </div>
+          <div class="swiper-slide">
+            
+            <h2>Welcome</h2>
+            <h3>Let's create your username</h3>
+            <input
+              spellcheck="false"
+              oninput="checkValid(event)"
+              type="text"
+              placeholder="e.g. johnsmith"
+            />
+            <button disabled type="button" onclick="gotoSlide(3)">Next</button>
+          </div>
+          <div class="swiper-slide">
+
+            <h2>Finish</h2>
+            <h3>You're all good to go</h3>
+            <button type="submit">Complete</button>
+            <button class="secondary" onclick="restart()">Restart</button>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        
+      </div>
+    </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    
+</section>
+{{!-- <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">
       <div class="col-12 col-lg-9 col-xl-7">
@@ -118,7 +179,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> --}}
 <script>
 
   var genotp;

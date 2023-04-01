@@ -109,7 +109,6 @@ router.get('/uploadPhoto', verifyLogin, (req, res) => {
   res.render('user/photoUpload')
 });
 router.post('/photos', async (req, res) => {
-  console.log(req.body);
   let image = req.files.Image;
   let uploadedId = await userHelpers.uploadPhotos(req.body,req.session.user.Username)
 
@@ -226,12 +225,21 @@ router.get('/profile',verifyLogin,async(req,res)=>{
 });
 router.get('/userverification/:id',async(req,res)=>{
   
- res.render('user/commingsoon')
-
-  
+ res.render('user/userverification',{uid:req.params.id})
 
 });
+router.post('/userverification/:id',async(req,res)=>{
+  let uid=req.params.id;
+  let licenceimg= req.files.licenceimg;
+  let aadharimg=req.files.aadharimg;
+  let uploadedId = await userHelpers.userVerification(req.body,uid)
 
+  licenceimg.mv('./public/userverifydoc/' + uploadedId +'li'+ '.jpg');
+  aadharimg.mv('./public/userverifydoc/' + uploadedId +'ad'+ '.jpg');
+  res.redirect('/profile')
+
+ 
+ });
 router.get('/viewuserprofile/:id',async(req,res)=>{
   
   let userid=req.params.id
