@@ -148,15 +148,18 @@ body {
 
 /************signup*************************/
 .signupbg{
-  height: 100%;
-  background-color: #00eeff;
-  margin: 0;
+  position: absolute;
+   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #faf8ff;
   font-family: "Euclid Circular A";
   text-align: center;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  bottom: 0%;
 }
 .signup-card {
   display: flex;

@@ -52,24 +52,14 @@ router.post('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('user/signup')
 });
-router.post('/signup', (req, res) => {
-
-
-  res.render('user/signup2', { user: req.body })
-
-
-});
 
 router.post('/verify-otp', async (req, res) => {
   userHelpers.VerifyOtp(req.body.mailid).then((response) => {
     res.json(response);
   })
 });
-router.get('/signup2', (req, res) => {
 
-  res.render('user/signup2')
-});
-router.post('/signup2', (req, res) => {
+router.post('/signup', (req, res) => {
 
   userHelpers.Signup(req.body)
 
