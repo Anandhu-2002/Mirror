@@ -143,7 +143,6 @@ router.get('/userlist',async(req,res)=>{
   let users=await userHelpers.findalluser()
   const objWithIdIndex = users.findIndex((obj) => obj.Username === userid);
   users.splice(objWithIdIndex, 1);
-  console.log(users);
   res.render('user/userlist',{users,heading:'Message'});
 })
 
@@ -159,7 +158,6 @@ router.post('/userSearch', (req, res) => {
 });
 router.post('/mailidSearch', (req, res) => {
   userHelpers.mailidSearch(req.body.mailid).then((response) => {
-   console.log(response);
     res.json(response)
 })
 });
