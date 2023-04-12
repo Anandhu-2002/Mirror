@@ -17,7 +17,7 @@ router.post('/',(req,res)=>{
 router.get('/userverification',async(req,res)=>{
    let userrequests=await adminHelpers.userverification()
    res.render('admin/user_requests',{userrequests})
-   console.log(userrequests);
+  
 
 })
 

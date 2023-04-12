@@ -3,14 +3,16 @@
         {{#each userrequests}}
         <div class="veri-card">
             <div class="veri-doc">
-
+                <img src="/userverifydoc/{{this._id}}ad.jpg" class="image">
             </div>
             <div class="veri-doc">
-
+                <img src="/userverifydoc/{{this._id}}li.jpg" class="image">
             </div>
             <div class="veri-det">
                <div class="veri-user-det">
-
+                    Username: {{this.Username}} <br>
+                    Company Name: {{this.CompanyName}} <br>
+                    Company Address: {{this.CompanyAddress}}
                </div>
                <div class="veri-det-btn">
                  <a href="" class="veri-btn ac">Accept</a>
