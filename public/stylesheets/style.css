@@ -2,12 +2,7 @@
 /***********login*********************/
 
 
-.uploadbg{
-  color: white;
-  background-color: #000000;
 
-
-}
 body {
   height: 100%;
 }
@@ -605,6 +600,117 @@ div.recived {
   color: var(--dark-gray);
   background-color: #b6babd;
 
+}
+/*******************************upload image*************************/
+.upload-container{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.upload-container .image-upload{
+  display: flex;
+  width: 800px;
+  height: 400px;
+  /* background-color: #FEFFFF; */
+  box-shadow: 0 25px 50px rgba(0,0,0,0.55);
+  border-radius: 10px;
+}
+.upload-container .image-upload .image{
+  width: 60%;
+  height: 400px;
+}
+.upload-container .image-upload .details{
+  width: 400px;
+  height: 400px;
+  /* background: linear-gradient(170deg, rgba(58, 56, 56, 0.623) 0%, rgb(31, 31, 31) 100%); */
+  background-color: #FFFFFF;
+}
+/* details */
+.upload-container .wrapper{
+  width: 100%;
+  padding: 20px;
+
+}
+.upload-container .input-data{
+  height: 100%;
+  width: 100%;
+  position: relative; 
+}
+.upload-container  .input-data input{
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #3B82F6;
+  color: #333333;
+  font-weight: 700;   
+  outline: none;
+  background-color: transparent;         
+}
+.upload-container  .input-data label{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: gray;
+  pointer-events: none;
+  transition: all 0.8s ease;
+}
+.upload-container .input-data input:focus ~label,
+.upload-container .input-data input:valid ~label{
+  transform: translateY(-20px);
+  font-size: 15px;
+  color: #FF5858;
+}
+.upload-container .upimg{
+
+  height: 350px;
+  width: 300px;
+
+  
+}
+.upload-container .image{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.upload-container .details{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.upload-container  input:nth-child(1){
+  margin-top: 20px;
+}
+.upload-container .details .btn{
+  
+  display: flex;
+  justify-content: center;
+}
+.upload-container .details .btn button{
+  
+  margin-right: 20px;
+  margin-top: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+.upload-container .details .btn button:hover{
+  cursor: pointer;
+  background-color: #FF5858;
+}
+
+.upload-container i{
+  font-size: 100px;
+}
+.upload-container .image:hover{
+  cursor: pointer;
 }
 /************************userlist************************************/
 .userlist-main{

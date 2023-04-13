@@ -8,10 +8,29 @@
               <img src="/profilephotos/default-profile.png"
                 alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                 style="width: 150px; z-index: 1">
+                {{#if verified}}
+               <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                style="z-index: 1;" disabled>
+                Verifed
+              </button>
+              <a href="/uploadPhoto" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                style="z-index: 1;">
+               Upload Photo
+              </a>
+              {{else}}
+              {{#if pending}}
+                <button class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                style="z-index: 1;" disabled>
+                Pending
+              </button>
+              {{else}}
               <a href="/userverification/{{user.Username}}" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                 style="z-index: 1;">
                 Verify
               </a>
+              {{/if}}
+           {{/if}}
+
             </div>
             <div class="ms-3" style="margin-top: 130px;">
               <h5>{{user.FirstName}} {{user.LastName}}</h5>

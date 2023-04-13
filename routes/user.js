@@ -197,8 +197,15 @@ router.get('/following/:uid',async(req,res)=>{
 
 });
 router.get('/profile',verifyLogin,async(req,res)=>{
+  var verified=false;
+  var pending=false;
+  let user=await userHelpers.finduser(req.session.user.Username) 
   
-  user=req.session.user
+  if(user.Status=='Pending'){
+      pending=true
+  }else if(user.Status=='Verified'){
+      verified=true
+  }
   let photos=await userHelpers.profile(user.Username)
   let followers=await userHelpers.Followers(user.Username)
   let following=await userHelpers.Following(user.Username)
@@ -206,7 +213,7 @@ router.get('/profile',verifyLogin,async(req,res)=>{
   let photocount=photos.length
   let followerscount=followers.length
   let followingcount=following.length
-  res.render('user/profile',{user,photos,photocount,followerscount,followingcount})
+  res.render('user/profile',{user,photos,photocount,followerscount,followingcount,verified,pending})
 
   
 
@@ -221,9 +228,10 @@ router.post('/userverification/:id',async(req,res)=>{
   let licenceimg= req.files.licenceimg;
   let aadharimg=req.files.aadharimg;
   let uploadedId = await userHelpers.userVerification(req.body,uid)
-
+  
   licenceimg.mv('./public/userverifydoc/' + uploadedId +'li'+ '.jpg');
   aadharimg.mv('./public/userverifydoc/' + uploadedId +'ad'+ '.jpg');
+  await userHelpers.Userstatusupdate(req.session.user.Username,'Pending')
   res.redirect('/profile')
 
  
