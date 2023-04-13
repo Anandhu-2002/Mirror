@@ -363,6 +363,7 @@ body {
   padding: 12px 24px;
   border-radius: 24px;
   font-size: 12px;
+  font-weight: 600;
   font-size: 0.8rem;  
   letter-spacing: 2px;  
   cursor: pointer;
@@ -375,11 +376,20 @@ body {
 .outlinehome {
   background: transparent;
   color: rgba(0, 0, 0, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  border: 2px solid  #084cdf;
 
   
 }
+.outlinehome:hover {
+   transition: .3s;
+  padding: 15px 25px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.9);
+  background-color: #084cdf;
 
+
+  
+}
 
 .fillhome {
   background: rgba(255, 255, 255, 0.9);
@@ -400,7 +410,7 @@ body {
   margin-top: 20px;
   height: 80vh;
   width: 350px;
-  color: #fff;
+  color: #000000;
   backdrop-filter: blur(5px);
   padding: 10px;
 }

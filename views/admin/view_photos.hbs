@@ -1,0 +1,22 @@
+<section class="homebg">
+  <div class="home">
+    {{#each photos}}
+    <div class="homecard">
+      <div class="inner-card">
+        <div class="image-card"><img src="/photos/{{this._id}}.jpg" class="image"> </div>
+        <h1> <a class="no-link" href="/viewuserprofile/{{this.username}}">{{this.username}}</a></h1>
+        <p>{{this.Title}}</p>
+      </div>
+      <div class="homebutton-wrapper">
+      
+        <a class="btnhome outlinehome"  href="/admin/removephoto/{{this._id}}">DELETE</a>
+        
+      </div>
+    </div>
+    {{/each}}
+
+
+  </div>
+ 
+
+</section>

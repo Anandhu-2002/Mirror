@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var adminHelpers = require('../helpers/admin-helpers');
+var userHelpers=require('../helpers/user-helpers');
 var fs=require('fs');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -43,13 +44,37 @@ router.get('/user-reject/:id/:uname',async(req,res)=>{
 
   fs.unlink(addhar,()=>{
     fs.unlink(licence,async()=>{
-      await adminHelpers.rejectuserverification(req.params.id)
+      await adminHelpers.userverificationaction(req.params.id)
       await adminHelpers.Userstatusupdate(req.params.uname,'Rejected')
       res.redirect('/admin/userverification')
     })
   });
 
+})
+router.get('/view-photos',async(req,res)=>{
+  userHelpers.viewPhotos().then((photos)=>{
+  photos.reverse()  
  
+  res.render('admin/view_photos',{photos})
+
+  })
+})
+router.get('/removephoto/:id',async(req,res)=>{
+  let photoId=req.params.id
+  await userHelpers.removePhoto(photoId)
+  let imgpath='./public/photos/' + photoId + '.jpg'
+  fs.unlink(imgpath,(err)=>{
+    if (!err) {
+      res.redirect('/admin/view-photos')
+
+    } else {
+      res.redirect('/admin/view-photos')
+    }
+
+
+  })
+
+
 
 })
 

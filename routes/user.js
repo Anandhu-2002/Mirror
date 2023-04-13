@@ -80,7 +80,7 @@ router.get('/resetpassword',(req,res)=>{
 })
 router.get('/home', verifyLogin, async(req, res) => {
   let user = req.session.user
-  userHelpers.viewPhotos().then((allphotos)=>{
+    userHelpers.viewPhotos().then((allphotos)=>{
     allphotos.reverse()
     let photos=removeObjectWithId(allphotos,user.Username)   
     res.render('user/home', { user, photos})
