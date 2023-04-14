@@ -200,6 +200,7 @@ body {
 
 .signup-card input::placeholder {
   color: rgba(0, 0, 0, 0.24);
+  font-weight: 1000;
 }
 
 .signup-card button {

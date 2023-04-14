@@ -21,21 +21,17 @@
               name="Emailid" 
               placeholder="Email"
             />
-            <button disabled type="button" id="emailsubbtn" onclick="gotoSlide(1);otpVerification()">Next</button>
-          </div>
-          <div class="swiper-slide">
-            
-            <h2>Verify Email</h2>
-            <h3>Enter the otp recived in your email</h3>
+          
             <input
-              oninput="checkValid(event);checkOtp()"
+              oninput="checkOtp()"
               type="text" 
               id="otp"
               type="text"
               placeholder="otp"
             />
-            <button disabled type="button" id="butt" onclick="gotoSlide(2)">Next</button>
+            <button disabled type="button" id="emailsubbtn" onclick="otpVerification()">Send Otp</button>
           </div>
+          
           <div class="swiper-slide">
             
             
@@ -62,14 +58,14 @@
               type="password"
               placeholder="Conform Password"
             />
-            <button disabled type="button" id="un" onclick="gotoSlide(3)">Next</button>
+            <button disabled type="button" id="un" onclick="gotoSlide(2)">Next</button>
           </div>
           <div class="swiper-slide">
 
             <h2>Finish</h2>
             <h3>You're all good to go</h3>
             <button type="submit">Complete</button>
-            <button class="secondary" onclick="restart()">Restart</button>
+            <button class="secondary" type="button" onclick="restart(0)">Restart</button>
           </div>
         </div>
         <!-- If we need pagination -->
@@ -110,9 +106,13 @@
     
     inpotp = document.getElementById('otp').value
     if (inpotp === genotp) {
-      $('#butt').removeAttr("disabled");
+      gotoSlide(1);
     } else {
-      $('#butt').attr('disabled', 'disabled');
+       $('#otp').css('border', function(){
+        
+            return 'solid 1px #f00';
+        
+        }).change()
     }
   }
   function mailidSearch(){
@@ -134,12 +134,13 @@
         $('#emailsubbtn').attr('disabled', 'disabled');
         }
         else{
-         $('#mailid').css('border', function(){
+       $('#mailid').css('border', function(){
         
             return 'solid 1px rgba(0, 0, 0, 0.16)';
         
         }).change()
         $('#emailsubbtn').removeAttr('disabled')
+        
         }
 
         }else{
@@ -196,15 +197,16 @@
     let pass2 = document.getElementById('pass2').value
     if (pass1 === pass2) {
       $('#un').removeAttr("disabled");
-    } else {
-      $('#pass1').css('border', function(){
+     $('#pass2').css('border', function(){
         
             return 'solid 1px rgba(0, 0, 0, 0.16)';
         
         }).change()
-        $('#pass2').css('border', function(){
+    } else {
+
+       $('#pass2').css('border', function(){
         
-            return 'solid 1px rgba(0, 0, 0, 0.16)';
+            return 'solid 1px #f00';
         
         }).change()
       $('#un').attr('disabled', 'disabled');
