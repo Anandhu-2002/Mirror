@@ -87,6 +87,19 @@ module.exports = {
 
     })
   },
+Resetpassword: (userdet) => {
+    return new Promise(async(resolve, reject) => {
+      userdet.Password = await bcrypt.hash(userdet.Password, 10)
+      db.get().collection(collections.USER_COLLECTION).updateOne({Emailid:userdet.Emailid }, {
+        $set: {
+          Password:userdet.Password
+        }
+      }).then((response) => {
+        resolve()
+      })
+    })
+
+  },
   userSearch: (userName) => {
     return new Promise(async (resolve, reject) => {
       let user = await db.get().collection(collections.USER_COLLECTION).find({ Username: { $regex: userName } }).toArray()

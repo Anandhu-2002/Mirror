@@ -76,7 +76,13 @@ router.post('/userSearch', (req, res) => {
   })
 });
 router.get('/resetpassword',(req,res)=>{
-  res.render('user/commingsoon')
+  res.render('user/resetpassword')
+})
+router.post('/resetpassword',(req,res)=>{
+  userHelpers.Resetpassword(req.body).then(()=>{
+    res.redirect('/')
+  })
+  
 })
 router.get('/home', verifyLogin, async(req, res) => {
   let user = req.session.user
@@ -112,18 +118,18 @@ router.post('/photos', async (req, res) => {
 
   })
 });
-router.get('/editphoto/:id',async(req,res)=>{
+router.get('/editphoto/:id',verifyLogin,async(req,res)=>{
   let id=req.params.id
   let photos=await userHelpers.findPhoto(id)
   res.render('user/editimage',{photos})
 });
-router.post('/editphoto/:id',async(req,res)=>{
+router.post('/editphoto/:id', verifyLogin,async(req,res)=>{
   let id=req.params.id
   userHelpers.updatephoto(id,req.body).then(()=>{
      res.redirect('/profile')   
   })
 });
-router.get('/removephoto/:id',async(req,res)=>{
+router.get('/removephoto/:id', verifyLogin,async(req,res)=>{
   let photoId=req.params.id
   await userHelpers.removePhoto(photoId)
   let imgpath='./public/photos/' + photoId + '.jpg'
@@ -138,7 +144,7 @@ router.get('/removephoto/:id',async(req,res)=>{
 
   })
 });
-router.get('/userlist',async(req,res)=>{
+router.get('/userlist', verifyLogin,async(req,res)=>{
   let userid=req.session.user.Username
   let users=await userHelpers.findalluser()
   const objWithIdIndex = users.findIndex((obj) => obj.Username === userid);
@@ -218,12 +224,12 @@ router.get('/profile',verifyLogin,async(req,res)=>{
   
 
 });
-router.get('/userverification/:id',async(req,res)=>{
+router.get('/userverification/:id', verifyLogin,async(req,res)=>{
   
  res.render('user/userverification',{uid:req.params.id})
 
 });
-router.post('/userverification/:id',async(req,res)=>{
+router.post('/userverification/:id',verifyLogin,async(req,res)=>{
   let uid=req.params.id;
   let licenceimg= req.files.licenceimg;
   let aadharimg=req.files.aadharimg;
@@ -255,7 +261,7 @@ router.get('/viewuserprofile/:id',async(req,res)=>{
   res.render('user/publicprofile',{user,photos,photocount,followerscount,followingcount,followed})
 });
 
-router.get('/message/:uid',async(req,res)=>{
+router.get('/message/:uid',verifyLogin,async(req,res)=>{
   var reciver=req.params.uid;
   var sender=req.session.user.Username;
   
